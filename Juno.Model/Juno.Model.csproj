@@ -56,6 +56,8 @@
     <Compile Include="Abstract\Auditable.cs" />
     <Compile Include="Abstract\IAuditable.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuGroup.cs" />
@@ -68,7 +70,9 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductTag.cs" />
+    <Compile Include="Models\Slider.cs" />
     <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\VisitorStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
