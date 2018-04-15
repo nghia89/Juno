@@ -31,6 +31,7 @@ namespace Juno.Data
         public DbSet<ProductTag> ProductTags { set; get; }
         public DbSet<Slide> Slides { set; get; }
         public DbSet<Tag> Tags { set; get; }
+        public DbSet<New> News { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
 
         protected override void OnModelCreating(DbModelBuilder builder)

@@ -20,14 +20,22 @@ namespace Juno.Model.Models
 
         public int? DisplayOrder { set; get; }
 
+        [StringLength(250)]
+        public string image { get; set; }
+
         [Required]
         public int GroupID { set; get; }
 
+        public int? TypeID { get; set; }
+
+        public long ParentID { get; set; }
+
         [ForeignKey("GroupID")]
-        public virtual MenuGroup MenuGroup { set; get; }
+        public virtual MenuGroup MenuGroup { set; get; }//khoá ngoại
 
         [MaxLength(10)]
         public string Target { set; get; }
+
 
         public bool Status { set; get; }
     }
