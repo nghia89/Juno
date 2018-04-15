@@ -71,6 +71,8 @@
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductTag.cs" />
     <Compile Include="Models\Slider.cs" />
+    <Compile Include="Models\SupportOnline.cs" />
+    <Compile Include="Models\SystemConfig.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\VisitorStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

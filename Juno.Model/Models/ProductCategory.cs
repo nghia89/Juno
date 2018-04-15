@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Juno.Model.Models
 {
-    [Table("ProductCatrgorys")]
+    [Table("ProductCategories")]
     public class ProductCategory : Auditable
     {
         [Key]
