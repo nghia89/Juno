@@ -16,9 +16,9 @@ namespace Juno.server
 
         IEnumerable<Post> Getall();
         IEnumerable<Post> GetAllPaging(int page,int pagesize,out int totalrow);
-        Post GetById(int id);
-
-        IEnumerable<Post> GetAllByTagPaging(int page, int pagesize, out int totalrow);
+        IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow);
+        Post GetById(int id);    
+        IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
         void SaveChanges();
 
     }
@@ -47,15 +47,21 @@ namespace Juno.server
             return _postRepository.GetAll(new string[] { "PostCategory" });
         }
 
-        public IEnumerable<Post> GetAllByTagPaging( int page, int pagesize, out int totalrow)
+        public IEnumerable<Post> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow)
         {
-            return _postRepository.GetMultiPaging(x => x.Status , out totalrow, page, pagesize);
+            return _postRepository.GetMultiPaging(x => x.Status  && x.CategoryID == categoryId, out totalRow, page, pageSize,new string[] { "PostCategory" });
         }
 
-        public IEnumerable<Post> GetAllPaging(int page, int pagesize, out int totalrow)
+        public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
         {
-            //select all post by tag
-            return _postRepository.GetMultiPaging(x => x.Status, out totalrow, page, pagesize);
+            //TODO: Select all post by tag
+            return _postRepository.GetAllByTag(tag, page, pageSize, out totalRow);
+
+        }
+
+        public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            return _postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
         }
 
         public Post GetById(int id)
