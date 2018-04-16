@@ -62,9 +62,9 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="JunoDBContext.cs" />
-    <Compile Include="Migrations\201804160321293_InitialDB.cs" />
-    <Compile Include="Migrations\201804160321293_InitialDB.Designer.cs">
-      <DependentUpon>201804160321293_InitialDB.cs</DependentUpon>
+    <Compile Include="Migrations\201804160819481_InitialDB.cs" />
+    <Compile Include="Migrations\201804160819481_InitialDB.Designer.cs">
+      <DependentUpon>201804160819481_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,7 +85,6 @@
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\ProductTagRepository.cs" />
     <Compile Include="Repositories\provincesRepository.cs" />
-    <Compile Include="Repositories\SizeIAndImagesRepository.cs" />
     <Compile Include="Repositories\SizeRepository.cs" />
     <Compile Include="Repositories\SlideRepository.cs" />
     <Compile Include="Repositories\SupportOnlineRepository.cs" />
@@ -108,8 +107,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804160321293_InitialDB.resx">
-      <DependentUpon>201804160321293_InitialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804160819481_InitialDB.resx">
+      <DependentUpon>201804160819481_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

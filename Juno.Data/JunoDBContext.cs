@@ -9,8 +9,8 @@ namespace Juno.Data
         public JunoDBContext() : base("JunoShopConnection")
         {
             //Database.SetInitializer<JunoDBContext>(null); // Remove default initializer
-            //Configuration.LazyLoadingEnabled = false;
-            Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
+            //Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Footer> Footers { set; get; }

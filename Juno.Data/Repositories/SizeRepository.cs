@@ -11,6 +11,7 @@ namespace Juno.Data.Repositories
     {
         public SizeRepository(IDbFactory dbFactory) : base(dbFactory)
         {
+
         }
     }
 }

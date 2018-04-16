@@ -13,7 +13,7 @@ namespace Juno.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201804160321293_InitialDB"; }
+            get { return "201804160819481_InitialDB"; }
         }
         
         string IMigrationMetadata.Source
