@@ -1,24 +1,22 @@
-﻿using Juno.Model.Models;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Juno.Model.Models;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Juno.Data
 {
-    public class JunoDBContext : DbContext
+    public class JunoDBContext : IdentityDbContext<ApplicationUser>
     {
         public JunoDBContext() : base("JunoShopConnection")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            //Database.SetInitializer<JunoDBContext>(null); // Remove default initializer
+            //Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Footer> Footers { set; get; }
-        public DbSet<ApplicationUser> ApplicationUsers { set; get; }
         public DbSet<Error> Errors { set; get; }
         public DbSet<Feedback> Feedbacks { set; get; }
+        public DbSet<Menu> Menus { set; get; }
         public DbSet<MenuGroup> MenuGroups { set; get; }
         public DbSet<Order> Orders { set; get; }
         public DbSet<OrderDetail> OrderDetails { set; get; }
@@ -31,13 +29,25 @@ namespace Juno.Data
         public DbSet<ProductTag> ProductTags { set; get; }
         public DbSet<Slide> Slides { set; get; }
         public DbSet<Tag> Tags { set; get; }
+        public DbSet<province> provinces { set; get; }
         public DbSet<New> News { set; get; }
+        public DbSet<FavoriteColor> FavoriteColors { set; get; }
+        public DbSet<Size> Sizes { set; get; }
+        public DbSet<Picture> Pictures { set; get; }
+        public DbSet<SystemConfig> SystemConfigs { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
+
+        public static JunoDBContext Create()
+        {
+            return new JunoDBContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId }).ToTable("ApplicationUserRoles");
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId).ToTable("ApplicationUserLogins");
+            builder.Entity<IdentityRole>().ToTable("ApplicationRoles");
+            builder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("ApplicationUserClaims");
         }
-
     }
 }

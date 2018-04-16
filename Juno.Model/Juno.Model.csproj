@@ -72,6 +72,9 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductTag.cs" />
+    <Compile Include="Models\province.cs" />
+    <Compile Include="Models\Size.cs" />
+    <Compile Include="Models\FavoriteColor.cs" />
     <Compile Include="Models\Slider.cs" />
     <Compile Include="Models\SupportOnline.cs" />
     <Compile Include="Models\SystemConfig.cs" />

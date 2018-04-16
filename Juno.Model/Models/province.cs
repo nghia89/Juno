@@ -3,10 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Juno.Model.Models
 {
-    [Table("province")]
+    [Table("provinces")]
     public partial class province
     {
+        [Key]
         [StringLength(5)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string provinceid { get; set; }
 
         [Required]

@@ -7,6 +7,7 @@ namespace Juno.Model.Models
     [Table("News")]
     public partial class New
     {
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ID { get; set; }
 

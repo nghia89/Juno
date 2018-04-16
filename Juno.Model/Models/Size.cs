@@ -1,24 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Juno.Model.Models
 {
-    [Table("Picture")]
-    public partial class Picture
+    [Table("Sizes")]
+   public class Size
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [StringLength(250)]
-        public string image { get; set; }
+        public int PoductID { get; set; }
 
-        public int? DisplayOrder { get; set; }
-
-        public int ProductID { get; set; }
-
-        [ForeignKey("ProductID")]
+        public byte Sizes { get; set; }
+      
+        [ForeignKey("PoductID")]
         public virtual Product Product { set; get; }
     }
 }

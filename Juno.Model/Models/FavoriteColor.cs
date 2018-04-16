@@ -3,9 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Juno.Model.Models
 {
-    [Table("SizeIAndImage")]
-    public partial class SizeIAndImage
+    [Table("FavoriteColors")]
+    public partial class FavoriteColor
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [StringLength(50)]
@@ -14,12 +16,11 @@ namespace Juno.Model.Models
         [StringLength(50)]
         public string CodeColor { get; set; }
 
-        public long? PoductID { get; set; }
+        public int PoductID { get; set; }
 
-        public byte? Size { get; set; }
-
-        [Column(TypeName = "image")]
-        public byte[] Images { get; set; }
+        [MaxLength(256)]
+        public string Images { set; get; }
+        [ForeignKey("PoductID")]
         public virtual Product Product { set; get; }
     }
 }
