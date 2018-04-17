@@ -16,7 +16,7 @@ namespace Juno.server
         void Delete(int id);
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
-        IEnumerable<PostCategory> GetById(int id);
+        PostCategory GetById(int id);
     }
     public class PostCategoryService : IPostCategoryService
     {
@@ -56,5 +56,7 @@ namespace Juno.server
         {
             _postCategoryRepository.Update(postCategory);
         }
+
+    
     }
 }
