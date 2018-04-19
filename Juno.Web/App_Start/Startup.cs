@@ -4,22 +4,27 @@ using Autofac.Integration.WebApi;
 using Juno.Data;
 using Juno.Data.Infrastructure;
 using Juno.Data.Repositories;
+using Juno.Model.Models;
 using Juno.server;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.DataProtection;
 using Owin;
 using System.Reflection;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 
-[assembly: OwinStartup(typeof(Juno.Web.App_Start.Startup1))]
+[assembly: OwinStartup(typeof(Juno.Web.App_Start.Startup))]
 
 namespace Juno.Web.App_Start
 {
-    public class Startup1
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
             ConfigAutofac(app);
+            ConfigureAuth(app);
         }
 
         private void ConfigAutofac(IAppBuilder app)
@@ -34,12 +39,12 @@ namespace Juno.Web.App_Start
 
             builder.RegisterType<JunoDBContext>().AsSelf().InstancePerRequest();
 
-            ////Asp.net Identity
-            //builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
-            //builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
-            //builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
-            //builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
-            //builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
+            //Asp.net Identity
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             // Repositories
             builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
