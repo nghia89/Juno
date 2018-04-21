@@ -7,13 +7,13 @@ namespace Juno.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class IntergrateAspnetIdentity : IMigrationMetadata
+    public sealed partial class InitialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(IntergrateAspnetIdentity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804191340060_Intergrate-AspnetIdentity"; }
+            get { return "201804211724088_InitialDB"; }
         }
         
         string IMigrationMetadata.Source

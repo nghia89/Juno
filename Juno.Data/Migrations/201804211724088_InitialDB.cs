@@ -27,10 +27,11 @@ namespace Juno.Data.Migrations
                         CodeColor = c.String(maxLength: 50),
                         PoductID = c.Int(nullable: false),
                         Images = c.String(maxLength: 256),
+                        Product_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Products", t => t.PoductID, cascadeDelete: true)
-                .Index(t => t.PoductID);
+                .ForeignKey("dbo.Products", t => t.Product_ID)
+                .Index(t => t.Product_ID);
             
             CreateTable(
                 "dbo.Products",
@@ -473,7 +474,7 @@ namespace Juno.Data.Migrations
             DropForeignKey("dbo.ApplicationUserLogins", "ApplicationUser_Id", "dbo.ApplicationUsers");
             DropForeignKey("dbo.ApplicationUserClaims", "ApplicationUser_Id", "dbo.ApplicationUsers");
             DropForeignKey("dbo.Menus", "GroupID", "dbo.MenuGroups");
-            DropForeignKey("dbo.FavoriteColors", "PoductID", "dbo.Products");
+            DropForeignKey("dbo.FavoriteColors", "Product_ID", "dbo.Products");
             DropForeignKey("dbo.Products", "CategoryID", "dbo.ProductCategories");
             DropIndex("dbo.Sizes", new[] { "PoductID" });
             DropIndex("dbo.ProductTags", new[] { "TagID" });
@@ -491,7 +492,7 @@ namespace Juno.Data.Migrations
             DropIndex("dbo.OrderDetails", new[] { "OrderID" });
             DropIndex("dbo.Menus", new[] { "GroupID" });
             DropIndex("dbo.Products", new[] { "CategoryID" });
-            DropIndex("dbo.FavoriteColors", new[] { "PoductID" });
+            DropIndex("dbo.FavoriteColors", new[] { "Product_ID" });
             DropTable("dbo.VisitorStatistics");
             DropTable("dbo.SystemConfigs");
             DropTable("dbo.Slides");
