@@ -20,7 +20,6 @@ namespace Juno.Model.Models
 
         [MaxLength(256)]
         public string Images { set; get; }
-        [ForeignKey("PoductID")]
         public virtual Product Product { set; get; }
     }
 }
