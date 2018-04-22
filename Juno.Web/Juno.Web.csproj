@@ -233,7 +233,11 @@
     <Content Include="app\components\products\productEditView.html" />
     <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\products\productListView.html" />
+    <Content Include="app\components\product_categories\productCategoryListController.js" />
+    <Content Include="app\components\product_categories\productCategoryListView.html" />
+    <Content Include="app\components\product_categories\productCategory.module.js" />
     <Content Include="app\shared\modules\junoshop.common.js" />
+    <Content Include="app\shared\services\apiService.js" />
     <Content Include="Assets\Admin\css\AdminLTE.css" />
     <Content Include="Assets\Admin\css\AdminLTE.min.css" />
     <Content Include="Assets\Admin\css\alt\AdminLTE-bootstrap-social.css" />
@@ -4964,10 +4968,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\blog\" />
-    <Folder Include="app\components\product_categories\" />
     <Folder Include="app\shared\directives\" />
     <Folder Include="app\shared\filters\" />
-    <Folder Include="app\shared\services\" />
     <Folder Include="app\shared\views\" />
     <Folder Include="Assets\Admin\libs\checklist-model\test\" />
     <Folder Include="Assets\Client\" />

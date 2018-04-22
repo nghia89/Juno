@@ -27,7 +27,7 @@ namespace Juno.Web.Api
 
         #endregion
 
-        [Route("getallparents")]
+        [Route("getall")]
         //[HttpGet]
         public HttpResponseMessage GetAll(HttpRequestMessage request)
         {

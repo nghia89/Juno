@@ -1,5 +1,4 @@
 ﻿/// <reference path="~/Assets/Admin/libs/angular/angular.js" />
-/// <reference path="~/Assets/Admin/libs/angular/angular.js" />
 
 (function () {
     angular.module('junoshop.products', ['junoshop.common']).config(config);
