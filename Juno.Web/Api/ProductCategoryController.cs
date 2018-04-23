@@ -29,12 +29,13 @@ namespace Juno.Web.Api
 
         [Route("getall")]
         //[HttpGet]
-        public HttpResponseMessage GetAll(HttpRequestMessage request, int page, int pageSize = 20)
+        public HttpResponseMessage GetAll(HttpRequestMessage request,string KeyWord, int page, int pageSize = 20)
         {
             return CreateHttpResponse(request, () =>
             {
                 var totalRow = 0;
-                var model = _productCategoryService.GetAll();
+                var model = _productCategoryService.GetAll(KeyWord);
+
                 totalRow = model.Count();
                 var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
                 var responseData = Mapper.Map<IEnumerable<ProductCategory>, IEnumerable<ProductCategoryViewModel>>(query);

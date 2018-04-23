@@ -17,6 +17,17 @@
         </div>
         <div class="box-body">
             <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="KeyWord" placeholder="Tìm kiếm...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="button" ng-click="search()">Tiềm kiếm</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+            <div class="row">
+
                 <div class="col-md-12">
                     <div class="box-body">
                         <table class="table table-bordered">
@@ -35,17 +46,23 @@
                                 </td>
                                 <!--badge bg-red-->
                                 <td>
-                                <span ng-class="{'badge bg-red':item.Status==false,'badge bg-green':item.Status==true}">
-                                    {{item.Status|StatusFilter}}
+                                    <span ng-class="{'badge bg-red':item.Status==false,'badge bg-green':item.Status==true}">
+                                        {{item.Status|StatusFilter}}
                                     </span>
                                 </td>
                                 <td>
                                     <button class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                                     <button class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </td>
+
                             </tr>
-                           
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5">Tổng Số Bản Ghi:{{totalCount}}</td>
+                                </tr>
+                            </tfoot>
                         </table>
+                     
                     </div>
                 </div>
             </div>

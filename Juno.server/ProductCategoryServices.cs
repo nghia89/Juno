@@ -15,6 +15,7 @@ namespace Juno.server
         void Update(ProductCategory ProductCategory);
         ProductCategory Delete(int id);
         IEnumerable<ProductCategory> GetAll();
+        IEnumerable<ProductCategory> GetAll(string Keyword);
         IEnumerable<ProductCategory> GetAllByParentId(int parentId);
         ProductCategory GetById(int id);
         void Save();
@@ -41,6 +42,15 @@ namespace Juno.server
         public IEnumerable<ProductCategory> GetAll()
         {
             return _ProductCategoryRepository.GetAll();
+        }
+
+        public IEnumerable<ProductCategory> GetAll(string Keyword)
+        {
+            if (!string.IsNullOrEmpty(Keyword))
+                return _ProductCategoryRepository.GetMulti(x => x.Name.Contains(Keyword) || x.Description.Contains(Keyword));
+            else
+                return _ProductCategoryRepository.GetAll();
+
         }
 
         public IEnumerable<ProductCategory> GetAllByParentId(int parentId)
