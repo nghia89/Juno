@@ -208,6 +208,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
+    <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\FavoriteColorViewModel.cs" />
@@ -236,6 +237,9 @@
     <Content Include="app\components\product_categories\productCategoryListController.js" />
     <Content Include="app\components\product_categories\productCategoryListView.html" />
     <Content Include="app\components\product_categories\productCategory.module.js" />
+    <Content Include="app\shared\directives\pagerDirective.js" />
+    <Content Include="app\shared\directives\pagerDirective.html" />
+    <Content Include="app\shared\filters\StatusFilter.js" />
     <Content Include="app\shared\modules\junoshop.common.js" />
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="Assets\Admin\css\AdminLTE.css" />
@@ -274,6 +278,9 @@
     <Content Include="Assets\Admin\css\skins\skin-yellow.min.css" />
     <Content Include="Assets\Admin\css\skins\_all-skins.css" />
     <Content Include="Assets\Admin\css\skins\_all-skins.min.css" />
+    <Content Include="Assets\Admin\Fontawesome\css\font-awesome.css" />
+    <Content Include="Assets\Admin\Fontawesome\css\font-awesome.min.css" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\Admin\img\avatar.png" />
     <Content Include="Assets\Admin\img\avatar04.png" />
     <Content Include="Assets\Admin\img\avatar2.png" />
@@ -4968,8 +4975,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\blog\" />
-    <Folder Include="app\shared\directives\" />
-    <Folder Include="app\shared\filters\" />
     <Folder Include="app\shared\views\" />
     <Folder Include="Assets\Admin\libs\checklist-model\test\" />
     <Folder Include="Assets\Client\" />
@@ -5260,6 +5265,39 @@
     <Content Include="Assets\Admin\libs\toastr\toastr.js.map" />
     <Content Include="Assets\Admin\libs\toastr\toastr.less" />
     <Content Include="Assets\Admin\libs\toastr\toastr.scss" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Admin\Fontawesome\less\animated.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\bordered-pulled.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\core.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\fixed-width.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\font-awesome.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\icons.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\larger.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\list.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\mixins.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\path.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\rotated-flipped.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\screen-reader.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\stacked.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\variables.less" />
+    <Content Include="Assets\Admin\Fontawesome\scss\font-awesome.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_animated.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_bordered-pulled.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_core.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_fixed-width.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_icons.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_larger.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_list.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_mixins.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_path.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_rotated-flipped.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_screen-reader.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_stacked.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_variables.scss" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
