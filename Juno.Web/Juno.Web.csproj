@@ -234,6 +234,8 @@
     <Content Include="app\components\products\productEditView.html" />
     <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\products\productListView.html" />
+    <Content Include="app\components\product_categories\productCategoryAddController.js" />
+    <Content Include="app\components\product_categories\productCategoryAddView.html" />
     <Content Include="app\components\product_categories\productCategoryListController.js" />
     <Content Include="app\components\product_categories\productCategoryListView.html" />
     <Content Include="app\components\product_categories\productCategory.module.js" />
@@ -279,6 +281,7 @@
     <Content Include="Assets\Admin\css\skins\skin-yellow.min.css" />
     <Content Include="Assets\Admin\css\skins\_all-skins.css" />
     <Content Include="Assets\Admin\css\skins\_all-skins.min.css" />
+    <Content Include="Assets\Admin\css\StyleCss.css" />
     <Content Include="Assets\Admin\Fontawesome\css\font-awesome.css" />
     <Content Include="Assets\Admin\Fontawesome\css\font-awesome.min.css" />
     <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.svg" />

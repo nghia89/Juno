@@ -2,11 +2,27 @@
 (function (app) {
     app.service('apiService', apiService);
 
-    apiService.$inject = ['$http'];
+    apiService.$inject = ['$http', 'notificationService'];
 
-    function apiService($http) {
+    function apiService($http, notificationService) {
         return {
-            get:get
+            get: get,
+            post: post
+        }
+        function post(url, data, success, failure) {
+            //authenticationService.setHeader();
+            $http.post(url, data).then(function (result) {
+                success(result);
+            }, function (error) {
+                console.log(error.status)
+                if (error.status === 401) {
+                    notificationService.displayError('Yêu cầu đăng nhập.');
+                }
+                else if (failure != null) {
+                    failure(error);
+                }
+
+            });
         }
         function get(url, params, success, failure) {
             $http.get(url, params).then(function (result) {
