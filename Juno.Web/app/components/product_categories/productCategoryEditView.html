@@ -1,13 +1,13 @@
 ﻿<section class="content-header">
     <h1>
-        Thêm mới danh mục
+        Cập nhật danh mục: {{productCategory.Name}}
 
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
         <li><a href="#">Sản phẩm</a></li>
         <li><a ui-sref="product_categories">Danh mục</a></li>
-        <li class="active">Thêm mới</li>
+        <li class="active">Cập nhật</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -15,7 +15,7 @@
 
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">Thêm mới</h3>
+            <h3 class="box-title">{{productCategory.Name}}</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                 <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -24,7 +24,7 @@
 
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal" novalidate name="frmAddProductCategory" role="form" ng-submit="AddProductCategory()">
+        <form class="form-horizontal" novalidate name="frmUpdateProductCategory" role="form" ng-submit="UpdateProductCategory()">
             <div class="box-body">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Tên danh mục</label>
@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Tiêu đề seo</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="alias" ng-model="productCategory.Alias" />
+                        <input type="text" class="form-control"  name="alias" ng-model="productCategory.Alias" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -81,8 +81,8 @@
                     <div class="col-sm-offset-2 col-sm-10">
                         <div class="">
                             <label class="container" style="padding-left: 30px;">
-                               
-                                <input type="checkbox" name="staus" ng-model="productcategory.Status" ng-checked="productCategory.Status" >
+
+                                <input type="checkbox" name="staus" ng-model="productcategory.Status" ng-checked="productCategory.Status">
                                 Kích hoạt
                                 <span class="checkmark"></span>
                             </label>
@@ -100,7 +100,7 @@
             <!-- /.box-body -->
             <div class="box-footer">
                 <button ui-sref="product_categories" class="btn btn-default">Huỷ</button>
-                <button type="submit" ng-disabled="frmAddProductCategory.$invalid" class="btn btn-success pull-right">Lưu</button>
+                <button type="submit" ng-disabled="frmUpdateProductCategory.$invalid" class="btn btn-success pull-right">Lưu</button>
             </div>
             <!-- /.box-footer -->
         </form>
