@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 
 namespace Juno.Web.Api
 {
@@ -37,6 +38,60 @@ namespace Juno.Web.Api
                 var model = _productCategoryService.GetById(id);
                 var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(model);
                 var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
+        //[HttpGet]
+        public HttpResponseMessage Delete(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response=null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var deleteIdProductCategory = _productCategoryService.Delete(id);
+                    _productCategoryService.Save();
+                    var responseData = Mapper.Map<ProductCategory, ProductCategoryViewModel>(deleteIdProductCategory);
+                     response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                }
+               
+                return response;
+            });
+        }
+        [Route("deletemulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedProductCategories)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    //chuyển chuổi danh sách id sang list danh sách
+                    var listProductCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedProductCategories);
+                    foreach (var item in listProductCategory)
+                    {
+                        _productCategoryService.Delete(item);
+                    }
+
+                    _productCategoryService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.OK, listProductCategory.Count);
+                }
+
                 return response;
             });
         }

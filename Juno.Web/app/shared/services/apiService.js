@@ -8,7 +8,23 @@
         return {
             get: get,
             post: post,
-            put:put
+            put: put,
+            del:del
+        }
+        function del(url, data, success, failure) {
+            //authenticationService.setHeader();
+            $http.delete(url, data).then(function (result) {
+                success(result);
+            }, function (error) {
+                console.log(error.status)
+                if (error.status === 401) {
+                    notificationService.displayError('Yêu cầu đăng nhập.');
+                }
+                else if (failure != null) {
+                    failure(error);
+                }
+
+            });
         }
         function put(url, data, success, failure) {
             //authenticationService.setHeader();
@@ -25,6 +41,7 @@
 
             });
         }
+
         function post(url, data, success, failure) {
             //authenticationService.setHeader();
             $http.post(url, data).then(function (result) {

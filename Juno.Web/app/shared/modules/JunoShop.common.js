@@ -1,3 +1,3 @@
 ﻿(function () {
-    angular.module('junoshop.common', ['ui.router'])
+    angular.module('junoshop.common', ['ui.router', 'ngBootbox'])
 })();
