@@ -16,7 +16,7 @@
             $scope.productCategory.Alias = commonService.getSeoTitle($scope.productCategory.Name);
         }
         function AddProductCategory() {
-            apiService.post('Api/productCategory/create', $scope.productCategory, function (result ) {
+            apiService.post('api/productcategory/create', $scope.productCategory, function (result) {
                 notificationService.displaySuccess(result.data.Name+' ' +'Đã được thêm mới.');
                 $state.go('product_categories');
             }, function (error) {
@@ -24,7 +24,7 @@
             });
         }
         function loadparentcategory() {
-            apiService.get('Api/productCategory/getallparent', null, function (result) {
+            apiService.get('api/productCategory/getallparent', null, function (result) {
                 $scope.parentcategories =result.data;
             }, function () {
                 console.log('canot get list parent  ')

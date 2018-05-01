@@ -12,11 +12,51 @@ namespace Juno.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{*botdetect}", new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
+
+            routes.MapRoute(
+               name: "Contact",
+               url: "lien-he.html",
+               defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+               namespaces: new string[] { "Juno.Web.Controllers" }
+              );
+            routes.MapRoute(
+                 name: "Login",
+                 url: "dang-nhap",
+                 defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
+                 namespaces: new string[] { "Juno.Web.Controllers" }
+             );
+            routes.MapRoute(
+              name: "Register",
+              url: "dang-ky.html",
+              defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
+              namespaces: new string[] { "Juno.Web.Controllers" }
+          );
+            routes.MapRoute(
+            name: "Cart",
+            url: "gio-hang.html",
+            defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional },
+            namespaces: new string[] { "Juno.Web.Controllers" }
+        );
+            routes.MapRoute(
+               name: "Product Category",
+               url: "{alias}.pc-{id}.html",
+               defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
+                 namespaces: new string[] { "Juno.Web.Controllers" }
+           );
+
+            routes.MapRoute(
+                 name: "Product",
+                 url: "{alias}.p-{productId}.html",
+                 defaults: new { controller = "Product", action = "Detail", productId = UrlParameter.Optional },
+                   namespaces: new string[] { "Juno.Web.Controllers" }
+             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                 namespaces: new string[] { "Juno.Web.Controllers" }
             );
         }
     }

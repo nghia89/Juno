@@ -6,15 +6,22 @@
 
     function config($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('products', {
-            url: "/products",
-            templateUrl: "/app/components/products/productListView.html",
-            controller: "productListController"
-            }).state('products_add', {
-            url: "/products_add",
-            templateUrl: "/app/components/products/productAddView.html",
-            controller: "productAddController"
-        });
+            .state('product', {
+                url: "/product",
+                parent: 'base',
+                templateUrl: "/app/components/products/productListView.html",
+                controller: "productListController"
+            }).state('add_products', {
+                url: "/add_products",
+                parent: 'base',
+                templateUrl: "/app/components/products/productAddView.html",
+                controller: "productAddController"
+            }).state('edit_products', {
+                url: "/edit_products/:id",
+                parent: 'base',
+                templateUrl: "/app/components/products/productEditView.html",
+                controller: "productEditController"
+            });
     }
 })();
 

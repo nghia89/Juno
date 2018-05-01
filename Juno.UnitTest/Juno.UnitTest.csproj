@@ -90,10 +90,6 @@
       <Project>{79a4a188-8ecd-4799-9141-f47264b27b3d}</Project>
       <Name>Juno.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Juno.server\Juno.Service.csproj">
-      <Project>{77feef6e-7461-4b52-b153-da6c0eaa1107}</Project>
-      <Name>Juno.Service</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Juno.Web\Juno.Web.csproj">
       <Project>{cf8dda12-54ed-47d2-8419-8975537b5913}</Project>
       <Name>Juno.Web</Name>

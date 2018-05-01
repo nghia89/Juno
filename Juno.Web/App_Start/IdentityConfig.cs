@@ -1,16 +1,13 @@
-﻿using Juno.Data;
-using Juno.Model.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
+using Juno.Data;
+using Juno.Model.Models;
 
 namespace Juno.Web.App_Start
 {

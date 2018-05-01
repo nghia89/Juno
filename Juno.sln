@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juno.Data", "Juno.Data\Juno
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juno.Model", "Juno.Model\Juno.Model.csproj", "{79A4A188-8ECD-4799-9141-F47264B27B3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juno.Service", "Juno.server\Juno.Service.csproj", "{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juno.UnitTest", "Juno.UnitTest\Juno.UnitTest.csproj", "{E852DEFB-D468-4816-91C8-6843F0A3CFA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juno.Web", "Juno.Web\Juno.Web.csproj", "{CF8DDA12-54ED-47D2-8419-8975537B5913}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Juno.Service", "Juno.Service\Juno.Service.csproj", "{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{79A4A188-8ECD-4799-9141-F47264B27B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79A4A188-8ECD-4799-9141-F47264B27B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79A4A188-8ECD-4799-9141-F47264B27B3D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E852DEFB-D468-4816-91C8-6843F0A3CFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E852DEFB-D468-4816-91C8-6843F0A3CFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E852DEFB-D468-4816-91C8-6843F0A3CFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{CF8DDA12-54ED-47D2-8419-8975537B5913}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF8DDA12-54ED-47D2-8419-8975537B5913}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF8DDA12-54ED-47D2-8419-8975537B5913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77FEEF6E-7461-4B52-B153-DA6C0EAA1107}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -58,6 +58,10 @@
     <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\CKFinder.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -194,16 +198,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
+    <Compile Include="Api\HomeController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
+    <Compile Include="Api\ProductController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -212,6 +222,8 @@
     <Compile Include="Infrastructure\Extensions\EntityExtensions.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\FavoriteColorViewModel.cs" />
+    <Compile Include="Models\FooterViewModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\PictureViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
@@ -220,6 +232,7 @@
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\SizeViewModel.cs" />
+    <Compile Include="Models\SlideViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -227,6 +240,9 @@
     <Content Include="app\app.js" />
     <Content Include="app\components\home\homeControler.js" />
     <Content Include="app\components\home\homeView.html" />
+    <Content Include="app\components\home\rootController.js" />
+    <Content Include="app\components\Login\loginController.js" />
+    <Content Include="app\components\Login\loginView.html" />
     <Content Include="app\components\products\products.module.js" />
     <Content Include="app\components\products\productAddController.js" />
     <Content Include="app\components\products\productAddView.html" />
@@ -246,8 +262,12 @@
     <Content Include="app\shared\filters\StatusFilter.js" />
     <Content Include="app\shared\modules\junoshop.common.js" />
     <Content Include="app\shared\services\apiService.js" />
+    <Content Include="app\shared\services\authData.js" />
+    <Content Include="app\shared\services\authenticationService.js" />
     <Content Include="app\shared\services\commonService.js" />
+    <Content Include="app\shared\services\loginService.js" />
     <Content Include="app\shared\services\notificationService.js" />
+    <Content Include="app\shared\View\baseView.html" />
     <Content Include="Assets\Admin\css\AdminLTE.css" />
     <Content Include="Assets\Admin\css\AdminLTE.min.css" />
     <Content Include="Assets\Admin\css\alt\AdminLTE-bootstrap-social.css" />
@@ -287,6 +307,7 @@
     <Content Include="Assets\Admin\css\StyleCss.css" />
     <Content Include="Assets\Admin\Fontawesome\css\font-awesome.css" />
     <Content Include="Assets\Admin\Fontawesome\css\font-awesome.min.css" />
+    <Content Include="Assets\Admin\Fontawesome\css\ionicons.min.css" />
     <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\Admin\img\avatar.png" />
     <Content Include="Assets\Admin\img\avatar04.png" />
@@ -4966,11 +4987,73 @@
     <Content Include="Assets\Admin\libs\toastr\toastr.js" />
     <Content Include="Assets\Admin\libs\toastr\toastr.min.css" />
     <Content Include="Assets\Admin\libs\toastr\toastr.min.js" />
+    <Content Include="Assets\Client\css\bootstrap.css" />
+    <Content Include="Assets\Client\css\etalage.css" />
+    <Content Include="Assets\Client\css\form.css" />
+    <Content Include="Assets\Client\css\style.css" />
+    <Content Include="Assets\Client\images\a-star.png" />
+    <Content Include="Assets\Client\images\arrow1.png" />
+    <Content Include="Assets\Client\images\arrow2.png" />
+    <Content Include="Assets\Client\images\avatar.png" />
+    <Content Include="Assets\Client\images\b-arrow.png" />
+    <Content Include="Assets\Client\images\ba.jpg" />
+    <Content Include="Assets\Client\images\baa.jpg" />
+    <Content Include="Assets\Client\images\bag.jpg" />
+    <Content Include="Assets\Client\images\bag1.jpg" />
+    <Content Include="Assets\Client\images\bo.jpg" />
+    <Content Include="Assets\Client\images\bott.jpg" />
+    <Content Include="Assets\Client\images\bottle.jpg" />
+    <Content Include="Assets\Client\images\ch.jpg" />
+    <Content Include="Assets\Client\images\facebook.png" />
+    <Content Include="Assets\Client\images\gpluse.png" />
+    <Content Include="Assets\Client\images\img-sprite.png" />
+    <Content Include="Assets\Client\images\label_new.png" />
+    <Content Include="Assets\Client\images\logo.png" />
+    <Content Include="Assets\Client\images\pi.jpg" />
+    <Content Include="Assets\Client\images\pi1.jpg" />
+    <Content Include="Assets\Client\images\pi2.jpg" />
+    <Content Include="Assets\Client\images\pi3.jpg" />
+    <Content Include="Assets\Client\images\pi4.jpg" />
+    <Content Include="Assets\Client\images\pic.jpg" />
+    <Content Include="Assets\Client\images\pic1.jpg" />
+    <Content Include="Assets\Client\images\pic10.jpg" />
+    <Content Include="Assets\Client\images\pic11.jpg" />
+    <Content Include="Assets\Client\images\pic12.jpg" />
+    <Content Include="Assets\Client\images\pic13.jpg" />
+    <Content Include="Assets\Client\images\pic2.jpg" />
+    <Content Include="Assets\Client\images\pic3.jpg" />
+    <Content Include="Assets\Client\images\pic4.jpg" />
+    <Content Include="Assets\Client\images\pic5.jpg" />
+    <Content Include="Assets\Client\images\pic6.jpg" />
+    <Content Include="Assets\Client\images\pic7.jpg" />
+    <Content Include="Assets\Client\images\pic8.jpg" />
+    <Content Include="Assets\Client\images\review.png" />
+    <Content Include="Assets\Client\images\rss.png" />
+    <Content Include="Assets\Client\images\s1.jpg" />
+    <Content Include="Assets\Client\images\s2.jpg" />
+    <Content Include="Assets\Client\images\s3.jpg" />
+    <Content Include="Assets\Client\images\s4.jpg" />
+    <Content Include="Assets\Client\images\sh.jpg" />
+    <Content Include="Assets\Client\images\si1.jpg" />
+    <Content Include="Assets\Client\images\si2.jpg" />
+    <Content Include="Assets\Client\images\si3.jpg" />
+    <Content Include="Assets\Client\images\si4.jpg" />
+    <Content Include="Assets\Client\images\star.png" />
+    <Content Include="Assets\Client\images\tick1.png" />
+    <Content Include="Assets\Client\images\twitter.png" />
+    <Content Include="Assets\Client\images\wa.jpg" />
+    <Content Include="Assets\Client\images\wat.jpg" />
+    <Content Include="Assets\Client\images\zoom.png" />
+    <Content Include="Assets\Client\js\jquery.etalage.min.js" />
+    <Content Include="Assets\Client\js\jquery.flexisel.js" />
+    <Content Include="Assets\Client\js\jquery.min.js" />
+    <Content Include="Assets\Client\js\jquery.wmuSlider.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Libs\CKFinder.dll" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -4982,10 +5065,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\blog\" />
-    <Folder Include="app\shared\views\" />
     <Folder Include="Assets\Admin\libs\checklist-model\test\" />
-    <Folder Include="Assets\Client\" />
     <Folder Include="Scripts\" />
+    <Folder Include="UploadedFiles\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="Views\Accout\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -5305,10 +5391,20 @@
     <Content Include="Assets\Admin\Fontawesome\scss\_screen-reader.scss" />
     <Content Include="Assets\Admin\Fontawesome\scss\_stacked.scss" />
     <Content Include="Assets\Admin\Fontawesome\scss\_variables.scss" />
+    <Content Include="ConnectionStrings.config" />
+    <Content Include="AppSettings.config" />
+    <Content Include="Assets\Client\images\Thumbs.db" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\Category.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Juno..Common\Juno..Common.csproj">
@@ -5323,7 +5419,7 @@
       <Project>{79a4a188-8ecd-4799-9141-f47264b27b3d}</Project>
       <Name>Juno.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Juno.server\Juno.Service.csproj">
+    <ProjectReference Include="..\Juno.Service\Juno.Service.csproj">
       <Project>{77feef6e-7461-4b52-b153-da6c0eaa1107}</Project>
       <Name>Juno.Service</Name>
     </ProjectReference>

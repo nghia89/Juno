@@ -34,6 +34,7 @@ namespace Juno.server
         }
         public void Add(Post post)
         {
+            
             _postRepository.Add(post);
         }
 

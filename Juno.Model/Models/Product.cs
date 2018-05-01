@@ -82,6 +82,7 @@ namespace Juno.Model.Models
         public bool NewBest { get; set; }
 
 
+
         public virtual IEnumerable<FavoriteColor> FavoriteColors { set; get; }
 
         public virtual IEnumerable<Picture> Pictures { set; get; }
