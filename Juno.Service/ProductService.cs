@@ -18,6 +18,7 @@ namespace Juno.server
         IEnumerable<Product> GetAll();
 
         IEnumerable<Product> GetAll(string Keyword);
+        IEnumerable<Product> GetListProductByCategoryIdPageing(int categoryId, int page, int pageSize, out int totalRow);
 
         Product GetById(int id);
         IEnumerable<Product> Getlastest(int top);
@@ -100,6 +101,13 @@ namespace Juno.server
         public IEnumerable<Product> Getlastest(int top)
         {
             return _ProductRepository.GetMulti(x => x.Status == true ).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Product> GetListProductByCategoryIdPageing(int categoryId, int page, int pageSize, out int totalRow)
+        {
+            var query = _ProductRepository.GetMulti(x => x.Status == true && x.CategoryID == categoryId);
+             totalRow = query.Count();
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
         public void Save()
