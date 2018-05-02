@@ -1,0 +1,126 @@
+﻿@model Juno.Web.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var relatedProduct = (IEnumerable<Juno.Web.Models.ProductViewModel>)ViewBag.relatedProducts;
+}
+<link href="~/Assets/Client/css/etalage.css" rel="stylesheet" />
+@section JsFooter{
+
+    <script src="~/Assets/Client/js/jquery.flexisel.js"></script>
+    <script src="~/Assets/Client/js/jquery.etalage.min.js"></script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $("#flexiselDemo1").flexisel({
+                visibleItems: 5,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,
+                pauseOnHover: true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: {
+                    portrait: {
+                        changePoint: 480,
+                        visibleItems: 1
+                    },
+                    landscape: {
+                        changePoint: 640,
+                        visibleItems: 2
+                    },
+                    tablet: {
+                        changePoint: 768,
+                        visibleItems: 3
+                    }
+                }
+            });
+
+            $('#etalage').etalage({
+                thumb_image_width: 300,
+                thumb_image_height: 400,
+                source_image_width: 900,
+                source_image_height: 1200,
+                show_hint: true,
+                click_callback: function (image_anchor, instance_id) {
+                    alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+                }
+            });
+
+        });
+    </script>
+
+}
+<div class=" single_top">
+    <div class="single_grid">
+        <div class="grid images_3_of_2">
+
+            <ul id="etalage">
+                <li>
+                    <a href="optionallink.html">
+                        <img class="etalage_thumb_image img-responsive" src="@Model.DefaultImage" />
+                        <img class="etalage_source_image img-responsive" src="@Model.DefaultImage" title="@Model.Name" />
+                    </a>
+                </li>
+                @{ var moreImages = (List<string>)ViewBag.MoreImages;
+                }
+                @foreach (var img in moreImages)
+                {
+                    <li>
+                        <img class="etalage_thumb_image img-responsive" src="@img" />
+                        <img class="etalage_source_image img-responsive" src="@img" title="" />
+                    </li>
+                }
+
+
+            </ul>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="desc1 span_3_of_2">
+
+
+            <h4>@Model.Name</h4>
+            <div class="cart-b">
+                <div class="left-n ">@Model.Price</div>
+                <a class="now-get get-cart-in" href="#">Thêm vào giỏ hàng</a>
+                <div class="clearfix"></div>
+            </div>
+            <h6>@Model.Quantity sản phẩm trong kho</h6>
+            <p>@Model.Description</p>
+            <div class="share">
+                <h5>Share Product :</h5>
+                <ul class="share_nav">
+                    <li><a href="#"><img src="/Assets/Client/images/facebook.png" title="facebook"></a></li>
+                    <li><a href="#"><img src="/Assets/Client/images/twitter.png" title="Twiiter"></a></li>
+                    <li><a href="#"><img src="/Assets/Client/images/rss.png" title="Rss"></a></li>
+                    <li><a href="#"><img src="/Assets/Client/images/gpluse.png" title="Google+"></a></li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <h3 class="m_3" style="text-transform: capitalize;">Sản phẫm liên quan</h3>
+    <ul id="flexiselDemo1">
+        @foreach (var product in relatedProduct)
+        {
+
+            <li>
+                <a href="/@(product.Alias).p-@(product.ID).html">
+                    <img style="width:100%" src="@product.DefaultImage" /><div class="grid-flex">
+                       <span>@product.Name</span> 
+                        <p>@product.Price</p>
+                    </div>
+                </a>
+            </li>
+
+        }
+    </ul>
+
+    <div class="toogle">
+        <h3 class="m_3"style="text-transform: capitalize;">Chi tiết sản phẫm</h3>
+        <p class="m_text">@Model.Content</p>
+    </div>
+</div>
+

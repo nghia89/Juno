@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Juno.Web.Controllers
 {
@@ -22,19 +23,25 @@ namespace Juno.Web.Controllers
             this._productService = productService;
             this._productCategoryService = productCategoryService;
         }
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int productId)
         {
-            return View();
+            var productModel = _productService.GetById(productId);
+            var viewModel = Mapper.Map<Product, ProductViewModel>(productModel);
+            var relatedProduct = _productService.GetReatedProducts(productId, 6);
+            ViewBag.relatedProducts = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(relatedProduct);
+            List<string> listMoreImg = new JavaScriptSerializer().Deserialize<List<string>>(viewModel.MoreImages);
+            ViewBag.MoreImages = listMoreImg;
+            return View(viewModel);
         }
-        public ActionResult Category(int id, int page=1)
+        public ActionResult Category(int id, int page = 1, string sort = "") 
         {
             int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
             int totalRow = 0;
-            var productModel = _productService.GetListProductByCategoryIdPageing(id,page,pageSize,out totalRow);
-            var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable < ProductViewModel >> (productModel);
+            var productModel = _productService.GetListProductByCategoryIdPageing(id, page, pageSize, sort, out totalRow);
+            var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
             var category = _productCategoryService.GetById(id);
-            ViewBag.category= Mapper.Map<ProductCategory, ProductCategoryViewModel>(category);
+            ViewBag.category = Mapper.Map<ProductCategory, ProductCategoryViewModel>(category);
             var paginationSet = new PaginationSet<ProductViewModel>()
             {
                 Items = productViewModel,
