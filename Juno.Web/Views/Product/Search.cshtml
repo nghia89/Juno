@@ -1,8 +1,7 @@
 ﻿@model Juno.Web.Infrastructure.Core.PaginationSet<Juno.Web.Models.ProductViewModel>
 @{
-    var category = (Juno.Web.Models.ProductCategoryViewModel)ViewBag.category;
-    var pageIndex = Model.Page;
-    ViewBag.Title = pageIndex == 1 ? category.Name : category.Name + " - Trang " + pageIndex;
+    var Keyword = (string)ViewBag.Keyword;
+    ViewBag.Title = "kết quả tìm kiếm cho từ khoá"+Keyword;
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 
 }
@@ -11,7 +10,7 @@
 
     <div class="w_content">
         <div class="women">
-            <a href="/@(category.Alias).pc-@(category.ID).html"><h4>@category.Name - <span>@Model.TotalCount Sản phẫm</span> </h4></a>
+            <a href="#"><h4>Kết quả tìm kiếm: @Keyword - <span>@Model.TotalCount Sản phẫm</span> </h4></a>
             <ul class="w_nav">
                 <li>Sắp xếp : </li>
                 <li><a class="active" href="?page=@Model.Page&sort=popular">Phổ biếng</a></li> |
@@ -28,8 +27,8 @@
     {
         <div class="grid-product">
             @foreach (var product in Model.Items)
-                {
-                    var url = "/" + product.Alias + ".p-" + product.ID+".html";
+            {
+                var url = "/" + product.Alias + ".p-" + product.ID + ".html";
                 <div class="  product-grid">
                     <div class="content_box">
                         <a href="@url">

@@ -43,8 +43,10 @@
                         <a href="/"><img src="/Assets/Client/images/logo.png" alt=" " /></a>
                     </div>
                     <div class="search">
-                        <input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
-                        <input type="submit" value="SEARCH">
+                        <form method="get" action="/tim-kiem.html">
+                            <input type="text" id="txtKeyword" name="keyword"  placeholder="Bạn tìm gì...">
+                            <input type="submit" value="Tìm kiếm" id="btnSearch">
+                        </form>
 
                     </div>
                     <div class="clearfix"> </div>

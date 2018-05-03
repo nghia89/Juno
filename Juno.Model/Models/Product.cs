@@ -50,6 +50,7 @@ namespace Juno.Model.Models
         [MaxLength(500)]
         public string Description { set; get; }
 
+        
         public string Content { set; get; }
 
         public bool? HomeFlag { set; get; }

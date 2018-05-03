@@ -20,6 +20,8 @@ namespace Juno.server
         IEnumerable<Product> GetAll(string Keyword);
         IEnumerable<Product> GetListProductByCategoryIdPageing(int categoryId, int page, int pageSize,string sort, out int totalRow);
         IEnumerable<Product> GetReatedProducts(int id, int top);//sản phẫm liên quan
+        IEnumerable<string> GetListProductByName(string name);
+        IEnumerable<Product> Search(string Keyword, int page, int pageSize, string sort, out int totalRow);
         Product GetById(int id);
         IEnumerable<Product> Getlastest(int top);
         IEnumerable<Product> GetHotProduct(int top);
@@ -125,6 +127,11 @@ namespace Juno.server
             return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
+        public IEnumerable<string> GetListProductByName(string name)
+        {
+            return _ProductRepository.GetMulti(x => x.Status==true && x.Name.Contains(name)).Select(y => y.Name);
+        }
+
         public IEnumerable<Product> GetReatedProducts(int id, int top)
         {
             var product = _ProductRepository.GetSingleById(id);
@@ -134,6 +141,28 @@ namespace Juno.server
         public void Save()
         {
             _unitOfWork.Commit();
+        }
+
+        public IEnumerable<Product> Search(string Keyword, int page, int pageSize, string sort, out int totalRow)
+        {
+            var query = _ProductRepository.GetMulti(x => x.Status == true && x.Name.Contains(Keyword));
+            switch (sort)
+            {
+                case "popular":
+                    query = query.OrderByDescending(x => x.ViewCount);
+                    break;
+                case "discount":
+                    query = query.OrderByDescending(x => x.PromotionPrice.HasValue);
+                    break;
+                case "price":
+                    query = query.OrderBy(x => x.Price);
+                    break;
+                default:
+                    query = query.OrderByDescending(x => x.CreatedDate);
+                    break;
+            }
+            totalRow = query.Count();
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
         public void Update(Product Product)

@@ -33,6 +33,35 @@ namespace Juno.Web.Controllers
             ViewBag.MoreImages = listMoreImg;
             return View(viewModel);
         }
+        public JsonResult GetListProductByName(string keyword)
+        {
+            var model = _productService.GetListProductByName(keyword);
+            return Json(new
+            {
+                data = model
+            }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Search(string Keyword, int page = 1, string sort = "")
+        {
+            int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
+            int totalRow = 0;
+            var productModel = _productService.Search(Keyword, page, pageSize, sort, out totalRow);
+            var productViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(productModel);
+            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+
+            ViewBag.Keyword = Keyword;
+            var paginationSet = new PaginationSet<ProductViewModel>()
+            {
+                Items = productViewModel,
+                MaxPage = int.Parse(ConfigHelper.GetByKey("MaxPage")),
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+            return View(paginationSet);
+        }
+
+        //sản phẫm theo danh mục
         public ActionResult Category(int id, int page = 1, string sort = "") 
         {
             int pageSize = int.Parse(ConfigHelper.GetByKey("PageSize"));
