@@ -114,21 +114,28 @@
         <div class="clearfix"> </div>
     </div>
     <h3 class="m_3" style="text-transform: capitalize;">Sản phẫm liên quan</h3>
-    <ul id="flexiselDemo1">
-        @foreach (var product in relatedProduct)
-        {
+    @if(relatedProduct.Count()>0){
+        <ul id="flexiselDemo1">
+            @foreach (var product in relatedProduct)
+            {
 
-            <li>
-                <a href="/@(product.Alias).p-@(product.ID).html">
-                    <img style="width:100%" src="@product.DefaultImage" /><div class="grid-flex">
-                       <span>@product.Name</span> 
-                        <p>@product.Price</p>
-                    </div>
-                </a>
-            </li>
+                <li>
+                    <a href="/@(product.Alias).p-@(product.ID).html">
+                        <img style="width:100%" src="@product.DefaultImage" /><div class="grid-flex">
+                            <span>@product.Name</span>
+                            <p>@product.Price</p>
+                        </div>
+                    </a>
+                </li>
 
-        }
-    </ul>
+            }
+        </ul>
+    }
+    else
+    {
+        <h4 class="m_3 btn btn-danger" style="text-transform: capitalize;">hiện không có Sản phẫm liên quan</h4>
+    }
+
 
     <div class="toogle">
         <h3 class="m_3"style="text-transform: capitalize;">Chi tiết sản phẫm</h3>

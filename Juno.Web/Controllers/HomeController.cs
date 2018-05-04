@@ -26,6 +26,7 @@ namespace Juno.Web.Controllers
         }
 
         // GET: Home
+        [OutputCache(Duration =60,Location =System.Web.UI.OutputCacheLocation.Server)]
         public ActionResult Index()
         {
             var sliderModel = _commonService.GetSlides();
@@ -42,10 +43,12 @@ namespace Juno.Web.Controllers
             return View(homeViewModel);
         }
         [ChildActionOnly]
+        [OutputCache(Duration=3600)]
         public ActionResult Footer()
         {
             var footerModel = _commonService.GetFooter();
             var footerViewModel = Mapper.Map<Footer, FooterViewModel>(footerModel);
+            ViewBag.time = DateTime.Now.ToString("T");
             return PartialView(footerViewModel);
         }
         [ChildActionOnly]
@@ -54,6 +57,7 @@ namespace Juno.Web.Controllers
             return PartialView();
         }
         [ChildActionOnly]
+        [OutputCache(Duration = 3600)]
         public ActionResult Category()
         {
             var model = _productCategoryService.GetAll();

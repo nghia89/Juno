@@ -7,6 +7,8 @@
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
+    using System.Diagnostics;
     using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Juno.Data.JunoDBContext>
@@ -18,6 +20,7 @@
         protected override void Seed(Juno.Data.JunoDBContext context)
         {
             CreateSlide(context);
+            CreatePage(context);
             //  This method will be called after migrating to the latest version.
 
         }
@@ -48,6 +51,37 @@
             var adminUser = manager.FindByEmail("tedu.international@gmail.com");
 
             manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+        }
+        private void CreatePage(JunoDBContext context)
+        {
+            if (context.Pages.Count() == 0)
+            {
+                try
+                {
+                    var page = new Page()
+                    {
+                        Name = "Giới thiệu",
+                        Alias = "gioi-thieu",
+                        Content = @"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium ",
+                        Status = true
+
+                    };
+                    context.Pages.Add(page);
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var eve in ex.EntityValidationErrors)
+                    {
+                        Trace.WriteLine($"Entity of type \"{eve.Entry.Entity.GetType().Name}\" in state \"{eve.Entry.State}\" has the following validation error.");
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Trace.WriteLine($"- Property: \"{ve.PropertyName}\", Error: \"{ve.ErrorMessage}\"");
+                        }
+                    }
+                }
+
+            }
         }
         private void CreateSlide(JunoDBContext context)
         {

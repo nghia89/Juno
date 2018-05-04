@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CommonServices.cs" />
     <Compile Include="ErrorService.cs" />
+    <Compile Include="PageService.cs" />
     <Compile Include="PostCategoryService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="ProductCategoryServices.cs" />
