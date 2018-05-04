@@ -4,6 +4,7 @@
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var relatedProduct = (IEnumerable<Juno.Web.Models.ProductViewModel>)ViewBag.relatedProducts;
+    
 }
 <link href="~/Assets/Client/css/etalage.css" rel="stylesheet" />
 @section JsFooter{
@@ -87,8 +88,19 @@
             </div>
             <h6>@Model.Quantity sản phẩm trong kho</h6>
             <p>@Model.Description</p>
+            <div class="tag">
+                <h5>Tag :</h5>
+                <ul class="taglist">
+                    @foreach (var tag in (IEnumerable<Juno.Web.Models.TagViewModel>)ViewBag.Tags)
+                    {
+                        <li><a href="/tag/@(tag.ID).html">@(tag.Name), </a></li>
+                    }
+
+                </ul>
+            </div>
+            <div class="clearfix"></div>
             <div class="share">
-                <h5>Share Product :</h5>
+                <h5>Share :</h5>
                 <ul class="share_nav">
                     <li><a href="#"><img src="/Assets/Client/images/facebook.png" title="facebook"></a></li>
                     <li><a href="#"><img src="/Assets/Client/images/twitter.png" title="Twiiter"></a></li>

@@ -4992,6 +4992,7 @@
     <Content Include="Assets\Client\css\etalage.css" />
     <Content Include="Assets\Client\css\form.css" />
     <Content Include="Assets\Client\css\style.css" />
+    <Content Include="Assets\Client\css\StyleSheetCustom.css" />
     <Content Include="Assets\Client\images\a-star.png" />
     <Content Include="Assets\Client\images\arrow1.png" />
     <Content Include="Assets\Client\images\arrow2.png" />
@@ -5409,6 +5410,7 @@
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\Product\ListByTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Juno..Common\Juno..Common.csproj">

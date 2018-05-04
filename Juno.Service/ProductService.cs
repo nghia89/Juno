@@ -25,6 +25,12 @@ namespace Juno.server
         Product GetById(int id);
         IEnumerable<Product> Getlastest(int top);
         IEnumerable<Product> GetHotProduct(int top);
+        IEnumerable<Tag> GetListTagByProductId(int id);
+        //viewCount
+        void IncreaseView(int id);
+        IEnumerable<Product> GetListProductByTag(string Tagid, int page, int pageSize, out int totalRow);
+
+        Tag GetTag(string tagid);
         void Save();
     }
 
@@ -105,6 +111,15 @@ namespace Juno.server
             return _ProductRepository.GetMulti(x => x.Status == true ).OrderByDescending(x => x.CreatedDate).Take(top);
         }
 
+        public IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow)
+        {
+            //var model = _ProductRepository.GetMulti(x=>x.Status &&x.ProductTags.Count(y=>y.ProductID==x.ID)>0,new string[] { "ProductCategory", "ProductTags" });
+            //totalRow = model.Count();
+
+            var model = _ProductRepository.GetListProductByTag(tagId, page, pageSize, out totalRow);
+            return model;
+        }
+
         public IEnumerable<Product> GetListProductByCategoryIdPageing(int categoryId, int page, int pageSize,string sort, out int totalRow)
         {
             var query = _ProductRepository.GetMulti(x => x.Status == true && x.CategoryID == categoryId);
@@ -132,10 +147,24 @@ namespace Juno.server
             return _ProductRepository.GetMulti(x => x.Status==true && x.Name.Contains(name)).Select(y => y.Name);
         }
 
+        public IEnumerable<Tag> GetListTagByProductId(int id)
+        {
+            return _productTagRepository.GetMulti(x => x.ProductID == id, new string[] { "Tag" }).Select(y => y.Tag);
+        }
+
         public IEnumerable<Product> GetReatedProducts(int id, int top)
         {
             var product = _ProductRepository.GetSingleById(id);
             return _ProductRepository.GetMulti(x => x.Status && x.ID != id && x.CategoryID == product.CategoryID).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public void IncreaseView(int id)
+        {
+            var product = _ProductRepository.GetSingleById(id);
+            if (product.ViewCount.HasValue)
+                product.ViewCount += 1;
+            else
+                product.ViewCount = 1;
         }
 
         public void Save()
@@ -190,6 +219,11 @@ namespace Juno.server
                 }
                
             }
+        }
+
+        public Tag GetTag(string tagid)
+        {
+            return _tagRepository.GetSingleByCondition(x =>x.ID==tagid);
         }
     }
 }

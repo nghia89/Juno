@@ -52,6 +52,12 @@ namespace Juno.Web
                    namespaces: new string[] { "Juno.Web.Controllers" }
              );
             routes.MapRoute(
+                name: "TagList",
+                url: "tag/{tagId}.html",
+                defaults: new { controller = "Product", action = "ListByTag", tagId = UrlParameter.Optional },
+                  namespaces: new string[] { "TeduShop.Web.Controllers" }
+            );
+            routes.MapRoute(
                   name: "Search",
                   url: "tim-kiem.html",
                   defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
