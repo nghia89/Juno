@@ -66,8 +66,13 @@
     <Compile Include="Migrations\201804211724088_InitialDB.Designer.cs">
       <DependentUpon>201804211724088_InitialDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805041440065_ContactDetailDB.cs" />
+    <Compile Include="Migrations\201805041440065_ContactDetailDB.Designer.cs">
+      <DependentUpon>201805041440065_ContactDetailDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FavoriteColorRepository.cs" />
     <Compile Include="Repositories\FeedbackRepository.cs" />
@@ -109,6 +114,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804211724088_InitialDB.resx">
       <DependentUpon>201804211724088_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805041440065_ContactDetailDB.resx">
+      <DependentUpon>201805041440065_ContactDetailDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

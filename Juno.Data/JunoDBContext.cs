@@ -36,6 +36,7 @@ namespace Juno.Data
         public DbSet<Picture> Pictures { set; get; }
         public DbSet<SystemConfig> SystemConfigs { set; get; }
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
+        public DbSet<ContactDetail> ContactDetails { set; get; }
 
         public static JunoDBContext Create()
         {

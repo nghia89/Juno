@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AutoMapper;
+using Juno.Model.Models;
+using Juno.server;
+using Juno.Web.Models;
 using System.Web.Mvc;
 
 namespace Juno.Web.Controllers
@@ -9,9 +9,18 @@ namespace Juno.Web.Controllers
     public class ContactController : Controller
     {
         // GET: Contact
+        private IContactDetailService _contactDetailService;
+
+        public ContactController(IContactDetailService contactDetailService)
+        {
+            this._contactDetailService = contactDetailService;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var model = _contactDetailService.GetDefaultContact();
+            var viewModel = Mapper.Map<ContactDetail, ContactDetailViewModel>(model);
+            return View(viewModel);
         }
     }
 }
