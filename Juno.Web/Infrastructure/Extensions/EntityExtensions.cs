@@ -98,5 +98,13 @@ namespace Juno.Web.Infrastructure.Extensions
             product.Quantity = productVm.Quantity;
             product.OriginalPrice = productVm.OriginalPrice;
         }
+        public static void UpdateFeedback(this Feedback feedback, FeedbackViewModel feedbackVm)
+        {
+            feedback.Name = feedbackVm.Name;
+            feedback.Email = feedbackVm.Email;
+            feedback.Message = feedbackVm.Message;
+            feedback.Status = feedbackVm.Status;
+            feedback.CreatedDate = DateTime.Now;
+        }
     }
 }

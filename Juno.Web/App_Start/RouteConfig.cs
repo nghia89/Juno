@@ -12,6 +12,7 @@ namespace Juno.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            // BotDetect requests must not be routed
             routes.IgnoreRoute("{*botdetect}", new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
             routes.MapRoute(
@@ -20,6 +21,12 @@ namespace Juno.Web
                defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
                namespaces: new string[] { "Juno.Web.Controllers" }
               );
+            routes.MapRoute(
+              name: "ContactFeedback",
+              url: "Contact/lien-he.html",
+              defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
+              namespaces: new string[] { "Juno.Web.Controllers" }
+             );
             routes.MapRoute(
                   name: "Page",
                   url: "trang/{alias}.html",
