@@ -221,6 +221,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,6 +242,7 @@
     <Compile Include="Models\ProductTagViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\ProductCategoryViewModel.cs" />
+    <Compile Include="Models\ShoppingCartViewModel.cs" />
     <Compile Include="Models\SizeViewModel.cs" />
     <Compile Include="Models\SlideViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
@@ -5057,6 +5059,7 @@
     <Content Include="Assets\Client\images\wat.jpg" />
     <Content Include="Assets\Client\images\zoom.png" />
     <Content Include="Assets\Client\js\controller\Contact.js" />
+    <Content Include="Assets\Client\js\controller\ShoppingCart.js" />
     <Content Include="Assets\Client\js\JavaScript.js" />
     <Content Include="Assets\Client\js\jquery.etalage.min.js" />
     <Content Include="Assets\Client\js\jquery.flexisel.js" />
@@ -5423,6 +5426,7 @@
     <Content Include="Views\Product\ListByTag.cshtml" />
     <Content Include="Views\Page\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Juno..Common\Juno..Common.csproj">

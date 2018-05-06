@@ -43,7 +43,7 @@
                     </div>
                     <h4><a href="@url"> @product.Name</a></h4>
                     <p>@product.Description</p>
-                    @(product.Price == 0 ? "Lên hệ" : product.Price.ToString("N2"))
+                    @(product.Price == 0 ? "Lên hệ" : product.Price.ToString("N0"))
                 </div>
             }
 

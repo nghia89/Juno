@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class=" single_top">
+    <div class="single_grid">
+        <h3>Giỏ hàng</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>STT</td>
+                    <td>Tên sản phẫm</td>
+                    <td>Hình ảnh</td>
+                    <td>Giá</td>
+                    <td>Số lượng</td>
+                    <td>thành tiền</td>
+                    <td>#</td>
+                </tr>
+            </thead>
+            <tbody id="CartBody"></tbody>
+        </table>
+        <div class="pull-right">
+            Tổng tiền:<span id="TotalOder"></span>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<script id="tplCart" type="x-tmpl-mustache">
+    <tr>
+        <td>{{ProductId}}</td>
+        <td>{{Name}}</td>
+        <td><img height="50" src="{{DefaultImage}}" /></td>
+        <td >{{PriceF}}</td>
+        <td> <input type="number" data-id="{{ProductId}}" data-price="{{Price}}" value="{{Quantity}}" class="input txtQuantity" /></td>
+        <td id="amount_{{ProductId}}">{{Amount}}</td>
+        <td><button class=" btn btn-danger btnDeleteItem"data-id="{{ProductId}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+    </tr>
+   
+</script>
