@@ -37,7 +37,7 @@ namespace Juno.Web
                   name: "Page",
                   url: "trang/{alias}.html",
                   defaults: new { controller = "Page", action = "Checkout", alias = UrlParameter.Optional },
-                  namespaces: new string[] { "TeduShop.Web.Controllers" }
+                  namespaces: new string[] { "Juno.Web.Controllers" }
               );
             routes.MapRoute(
                  name: "Login",
@@ -74,13 +74,13 @@ namespace Juno.Web
                 name: "TagList",
                 url: "tag/{tagId}.html",
                 defaults: new { controller = "Product", action = "ListByTag", tagId = UrlParameter.Optional },
-                  namespaces: new string[] { "TeduShop.Web.Controllers" }
+                  namespaces: new string[] { "Juno.Web.Controllers" }
             );
             routes.MapRoute(
                   name: "Search",
                   url: "tim-kiem.html",
                   defaults: new { controller = "Product", action = "Search", id = UrlParameter.Optional },
-                  namespaces: new string[] { "TeduShop.Web.Controllers" }
+                  namespaces: new string[] { "Juno.Web.Controllers" }
               );
 
             routes.MapRoute(
