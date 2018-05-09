@@ -22,6 +22,12 @@ namespace Juno.Web
                namespaces: new string[] { "Juno.Web.Controllers" }
                 );
             routes.MapRoute(
+               name: "Checkout",
+               url: "thanh-toan.html",
+               defaults: new { controller = "ShoppingCart", action = "Checkout", id = UrlParameter.Optional },
+              namespaces: new string[] { "Juno.Web.Controllers" }
+               );
+            routes.MapRoute(
                name: "Contact",
                url: "lien-he.html",
                defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },

@@ -2,7 +2,10 @@
 using Juno.Common;
 using Juno.Model.Models;
 using Juno.server;
+using Juno.Web.App_Start;
+using Juno.Web.Infrastructure.Extensions;
 using Juno.Web.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +18,13 @@ namespace Juno.Web.Controllers
     public class ShoppingCartController : Controller
     {
         IProductService _productService;
-        public ShoppingCartController(IProductService productService)
+        IOrderService _orderService;
+        private ApplicationUserManager _userManager;
+        public ShoppingCartController(IProductService productService, IOrderService orderService, ApplicationUserManager userManager)
         {
             this._productService = productService;
+            this._orderService = orderService;
+            this._userManager = userManager;
         }
         // GET: ShoppingCart
         public ActionResult Index()
@@ -25,6 +32,51 @@ namespace Juno.Web.Controllers
             if (Session[CommonConstants.SessionCart] == null)//nếu null mới được khởi tạo
                 Session[CommonConstants.SessionCart] = new List<ShoppingCartViewModel>();
             return View();
+        }
+        public JsonResult CreateOrder(string orderViewModel)
+        {
+            var order = new JavaScriptSerializer().Deserialize<OrderViewModel>(orderViewModel);
+
+            var orderNew = new Order();
+            orderNew.UpdateOrder(order);
+           
+            if (Request.IsAuthenticated)
+            {
+                orderNew.CustomerId = User.Identity.GetUserId();
+                orderNew.CreatedBy = User.Identity.GetUserName();
+            }
+            var cart = (List<ShoppingCartViewModel>)Session[CommonConstants.SessionCart];
+            List<OrderDetail> orderDetails = new List<OrderDetail>();
+            foreach (var item in cart)
+            {
+                var detail = new OrderDetail();
+                detail.ProductID = item.ProductId;
+                detail.Quantity = item.Quantity;
+                detail.Price = item.Product.Price;
+                orderDetails.Add(detail);
+            }
+            _orderService.Create( orderNew, orderDetails);
+            return Json(new
+            {
+                status = true
+            });
+        }
+        public JsonResult GetUser()
+        {
+            if (Request.IsAuthenticated)//kiễm tra nếu có đăng nhập thì vào lấy thông tin
+            {
+                var userId = User.Identity.GetUserId();
+                var user = _userManager.FindById(userId);
+                return Json(new
+                {
+                    data = user,
+                    status = true
+                });
+            }
+            return Json(new
+            {
+                status = false
+            });
         }
         public JsonResult GetAll()
         {
@@ -71,9 +123,10 @@ namespace Juno.Web.Controllers
             });
         }
         [HttpPost]
-        public JsonResult Update(string cartData)
+        public JsonResult Update(string cartData)//update quantity productId lên session
         {
             var cartViewModel = new JavaScriptSerializer().Deserialize<List<ShoppingCartViewModel>>(cartData);
+
             var cartSession = (List<ShoppingCartViewModel>)Session[CommonConstants.SessionCart];
             foreach (var item in cartSession)
             {
@@ -81,11 +134,21 @@ namespace Juno.Web.Controllers
                 {
                     if (item.ProductId == jitem.ProductId)
                     {
-                        item.ProductId = jitem.ProductId;
+                        item.Quantity = jitem.Quantity;
                     }
                 }
             }
+
             Session[CommonConstants.SessionCart] = cartSession;
+            return Json(new
+            {
+                status = true
+            });
+        }
+        [HttpPost]
+        public JsonResult DeleteAll()
+        {
+            Session[CommonConstants.SessionCart] = new List<ShoppingCartViewModel>();
             return Json(new
             {
                 status = true

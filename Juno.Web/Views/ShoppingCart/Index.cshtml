@@ -6,23 +6,65 @@
 
 <div class=" single_top">
     <div class="single_grid">
-        <h3>Giỏ hàng</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>STT</td>
-                    <td>Tên sản phẫm</td>
-                    <td>Hình ảnh</td>
-                    <td>Giá</td>
-                    <td>Số lượng</td>
-                    <td>thành tiền</td>
-                    <td>#</td>
-                </tr>
-            </thead>
-            <tbody id="CartBody"></tbody>
-        </table>
-        <div class="pull-right">
-            Tổng tiền:<span id="TotalOder"></span>
+        <div id="cartContent">
+            <h3>Giỏ hàng</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>STT</td>
+                        <td>Tên sản phẫm</td>
+                        <td>Hình ảnh</td>
+                        <td>Giá</td>
+                        <td>Số lượng</td>
+                        <td>thành tiền</td>
+                        <td>#</td>
+                    </tr>
+                </thead>
+                <tbody id="CartBody"></tbody>
+            </table>
+            <button class="btn btn-success" id="btnContinue">TIẾP TÚC MUA HÀNG</button>
+            @*<button class="btn btn-danger"id="btnDeleteAll">Xoá giỏ hàng</button>*@
+            <button class="btn btn-warning" id="btnCheckout">TIẾN HÀNH THANH TOÁN</button>
+            <div class="pull-right">
+                Tổng tiền:<span id="TotalOder"></span>
+            </div>
+        </div>
+        <div id="divCheckout" style="display:none;">
+            <div class="reservation_top">
+                <div class="contact_right">
+                    <h3>Thanh toán</h3>
+                    <div class="contact-form">
+                        <form method="post" id="frmPayment">
+                            @if (Request.IsAuthenticated)//
+                            {
+                                <label>
+                                    <input type="checkbox" id="chkUserLoginInfo" />
+                                    Sử dụng thông tin đăng nhập
+                                </label>
+                            }
+                            <label class="input-label">Tên</label>
+                            <input type="text" class="textbox" id="txtName" name="name" placeholder="Họ tên">
+                            <label class="input-label">Địa chỉ nhận hàng</label>
+                            <input type="text" class="textbox" id="txtAddress" name="address" placeholder="Địa chỉ">
+                            <label class="input-label">Địa chỉ Email</label>
+                            <input type="text" class="textbox" id="txtEmail" name="email" placeholder="Email">
+                            <label class="input-label">Số điện thoại</label>
+                            <input type="text" class="textbox" id="txtPhone" name="phone" placeholder="Điện thoại">
+                            <div class="clearfix"> </div>
+                            <label><input type="radio" id="rdoCash" name="paymentMethod" value="CASH" checked="checked" /> Tiền mặt</label>
+                            <label><input type="radio" id="rdoNL" name="paymentMethod" value="NL" /> TK Ngân Lượng</label>
+
+                            <label><input type="radio" id="rdoBank" value="ATM_ONLINE" name="paymentMethod" /> Thẻ Ngân hàng nội địa</label>
+
+                            <label><input type="radio" id="rdoVisa" name="paymentMethod" value="VISA" /> VISA</label>
+                            <div class="clearfix"> </div>
+                            <input type="button"class="btn btn-primary" id="btnCreateOrder" value="THANH TOÁN">
+                            <div class="clearfix"> </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -32,10 +74,10 @@
         <td>{{ProductId}}</td>
         <td>{{Name}}</td>
         <td><img height="50" src="{{DefaultImage}}" /></td>
-        <td >{{PriceF}}</td>
+        <td>{{PriceF}}</td>
         <td> <input type="number" data-id="{{ProductId}}" data-price="{{Price}}" value="{{Quantity}}" class="input txtQuantity" /></td>
         <td id="amount_{{ProductId}}">{{Amount}}</td>
-        <td><button class=" btn btn-danger btnDeleteItem"data-id="{{ProductId}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+        <td><button class=" btn btn-danger btnDeleteItem" data-id="{{ProductId}}"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
     </tr>
-   
+
 </script>
