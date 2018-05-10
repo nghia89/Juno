@@ -1,4 +1,5 @@
-﻿<header>
+﻿@using Microsoft.AspNet.Identity;
+<header>
     <div class="header">
         <div class="top-header">
             <div class="container">
@@ -44,7 +45,7 @@
                     </div>
                     <div class="search">
                         <form method="get" action="/tim-kiem.html">
-                            <input type="text" id="txtKeyword" name="keyword"  placeholder="Bạn tìm gì...">
+                            <input type="text" id="txtKeyword" name="keyword" placeholder="Bạn tìm gì...">
                             <input type="submit" value="Tìm kiếm" id="btnSearch">
                         </form>
 
@@ -52,13 +53,28 @@
                     <div class="clearfix"> </div>
                 </div>
                 <div class="header-bottom-right">
-                    <div class="account"><a href="login.html"><span> </span>TÀI KHOẢN CỦA BẠN</a></div>
-                    <ul class="login">
-                        <li><a href="/dang-nhap"><span> </span>ĐĂNG NHẬP</a></li> |
-                        <li><a href="/dang-ky.html">ĐĂNG XUẤT</a></li>
-                    </ul>
-                    <div class="cart"><a href="/gio-hang.html"><span> </span>GIỎ HÀNG</a></div>
-                    <div class="clearfix"> </div>
+                    @using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { @id = "frmLogout" }))
+                    {
+                        if (Request.IsAuthenticated)
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="account"><a href="/tai-khoan.html"><span> </span>Xin chào: @User.Identity.GetUserName()</a>
+                                <ul class="login">
+                                    @*<li><a href="/tai-khoan.html"><span> </span>Xin chào: @User.Identity.GetUserName()</a></li> |*@
+                                    <li><a href="#" id="btnLogout">Thoát</a></li>
+                                </ul>
+                            </div>
+                           
+
+                        }
+                        else
+                        {
+                            <ul class="login">
+                                <li><a href="/dang-nhap.html"><span> </span>ĐĂNG NHẬP</a></li> |
+                                <li><a href="/dang-ky.html">ĐĂNG KÝ</a></li>
+                            </ul>
+                        }
+                    }
                 </div>
                 <div class="clearfix"> </div>
             </div>

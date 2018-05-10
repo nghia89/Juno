@@ -47,16 +47,17 @@ namespace Juno.Web
               );
             routes.MapRoute(
                  name: "Login",
-                 url: "dang-nhap",
+                 url: "dang-nhap.html",
                  defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
                  namespaces: new string[] { "Juno.Web.Controllers" }
-             );
+             );          
             routes.MapRoute(
-              name: "Register",
-              url: "dang-ky.html",
-              defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
-              namespaces: new string[] { "Juno.Web.Controllers" }
-          );
+               name: "Register",
+               url: "dang-ky.html",
+               defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
+               namespaces: new string[] { "TeduShop.Web.Controllers" }
+           );
+           
             routes.MapRoute(
             name: "Cart",
             url: "gio-hang.html",
