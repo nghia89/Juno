@@ -26,6 +26,7 @@ namespace Juno.Web.App_Start
 
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+
             app.CreatePerOwinContext<UserManager<ApplicationUser>>(CreateManager);
 
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions

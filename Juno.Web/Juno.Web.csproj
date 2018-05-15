@@ -53,7 +53,7 @@
       <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.WebApi">
-      <HintPath>..\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
@@ -63,10 +63,6 @@
     </Reference>
     <Reference Include="BotDetect.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
       <HintPath>..\packages\Captcha.4.0.1\lib\net45\BotDetect.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -362,7 +358,6 @@
     <Content Include="Assets\Admin\js\demo.js" />
     <Content Include="Assets\Admin\js\pages\dashboard.js" />
     <Content Include="Assets\Admin\js\pages\dashboard2.js" />
-    <Content Include="Assets\Client\js\controller\common.js" />
     <Content Include="Assets\Admin\libs\angular-chart.js\angular-chart.js" />
     <Content Include="Assets\Admin\libs\angular-chart.js\dist\angular-chart.css" />
     <Content Include="Assets\Admin\libs\angular-chart.js\dist\angular-chart.js" />
@@ -5008,6 +5003,7 @@
     <Content Include="Assets\Admin\libs\toastr\toastr.js" />
     <Content Include="Assets\Admin\libs\toastr\toastr.min.css" />
     <Content Include="Assets\Admin\libs\toastr\toastr.min.js" />
+    <Content Include="Assets\Client\js\controller\common.js" />
     <Content Include="Assets\Client\css\bootstrap.css" />
     <Content Include="Assets\Client\css\etalage.css" />
     <Content Include="Assets\Client\css\form.css" />
@@ -5110,6 +5106,42 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Content Include="Assets\Admin\css\adminlte.css.map" />
     <Content Include="Assets\Admin\css\adminlte.min.css.map" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Admin\Fontawesome\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Admin\Fontawesome\less\animated.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\bordered-pulled.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\core.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\fixed-width.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\font-awesome.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\icons.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\larger.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\list.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\mixins.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\path.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\rotated-flipped.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\screen-reader.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\stacked.less" />
+    <Content Include="Assets\Admin\Fontawesome\less\variables.less" />
+    <Content Include="Assets\Admin\Fontawesome\scss\font-awesome.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_animated.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_bordered-pulled.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_core.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_fixed-width.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_icons.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_larger.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_list.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_mixins.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_path.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_rotated-flipped.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_screen-reader.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_stacked.scss" />
+    <Content Include="Assets\Admin\Fontawesome\scss\_variables.scss" />
+    <Content Include="ConnectionStrings.config" />
+    <Content Include="AppSettings.config" />
+    <Content Include="Assets\Client\images\Thumbs.db" />
     <Content Include="Assets\Admin\libs\angular-chart.js\.bower.json" />
     <Content Include="Assets\Admin\libs\angular-chart.js\angular-chart.less" />
     <Content Include="Assets\Admin\libs\angular-chart.js\bower.json" />
@@ -5382,42 +5414,6 @@
     <Content Include="Assets\Admin\libs\toastr\toastr.js.map" />
     <Content Include="Assets\Admin\libs\toastr\toastr.less" />
     <Content Include="Assets\Admin\libs\toastr\toastr.scss" />
-    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Assets\Admin\Fontawesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Assets\Admin\Fontawesome\fonts\FontAwesome.otf" />
-    <Content Include="Assets\Admin\Fontawesome\less\animated.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\bordered-pulled.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\core.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\fixed-width.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\font-awesome.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\icons.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\larger.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\list.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\mixins.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\path.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\rotated-flipped.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\screen-reader.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\stacked.less" />
-    <Content Include="Assets\Admin\Fontawesome\less\variables.less" />
-    <Content Include="Assets\Admin\Fontawesome\scss\font-awesome.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_animated.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_bordered-pulled.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_core.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_fixed-width.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_icons.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_larger.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_list.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_mixins.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_path.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_rotated-flipped.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_screen-reader.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_stacked.scss" />
-    <Content Include="Assets\Admin\Fontawesome\scss\_variables.scss" />
-    <Content Include="ConnectionStrings.config" />
-    <Content Include="AppSettings.config" />
-    <Content Include="Assets\Client\images\Thumbs.db" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
