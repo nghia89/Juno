@@ -2,13 +2,14 @@
 using Juno.Web.Infrastructure.Core;
 using System.Web.Http;
 
-namespace TeduShop.Web.Api
+namespace Juno.Web.Api
 {
     [RoutePrefix("api/home")]
     [Authorize]
     public class HomeController : ApiControllerBase
     {
-        IErrorService _errorService;
+        private IErrorService _errorService;
+
         public HomeController(IErrorService errorService) : base(errorService)
         {
             this._errorService = errorService;
