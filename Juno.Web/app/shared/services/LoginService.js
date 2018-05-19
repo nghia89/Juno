@@ -30,8 +30,8 @@
             return deferred.promise;
         }
 
-        this.logOut = function () {
-            apiService.post('/api/account/logout', null, function (response) {
+        this.logout = function () {
+            apiService.post('Api/Account/Logout', null, function (response) {
                 authenticationService.removeToken();
                 authData.authenticationData.IsAuthenticated = false;
                 authData.authenticationData.userName = "";
