@@ -3,26 +3,40 @@
     <div class=" top-nav rsidebar span_1_of_left">
         <h3 class="cate">CATEGORIES</h3>
         <ul class="menu">
-            @foreach (var item in Model.Where(x => x.ParentID == null))
+           @foreach (var category in Model.Where(x => x.ParentID == null))
             {
-                var url = "/" + item.Alias + ".pc-" + item.ID + ".html";
-                var childCtegory = Model.Where(x => x.ParentID == item.ID);
-                <li>
-                    <a href="@url">@item.Name @(childCtegory.Count() > 0 ? "<img class=\"arrow-img\" src=\"/Assets/client/images/arrow1.png\" alt=\"\" />" : "")</a>
-                    @if (childCtegory.Count() > 0)
-                    {
-                        <ul class="cute">
-                            @foreach (var child in childCtegory)
-                            {
-                                var childUrl = "/" + child.Alias + ".pc-" + child.ID + ".html";
-                                <li class="subitem3"><a href="@childUrl">@child.Name </a></li>
-                            }
+                var url = "/" + category.Alias + ".pc-" + category.ID + ".html";
+                var childCategories = Model.Where(x => x.ParentID == category.ID);
+            <li>
 
-                        </ul>
-                    }
+                @if (childCategories.Count() > 0)
+                {
+                    <a href="@url" class="">
+                        @category.Name<img class="arrow-img" src="/Assets/client/images/arrow1.png" alt="" />
+                    </a>
+                }
+                else
+                {
+                    <a href="@url" class="">
+                        @category.Name
+                    </a>
+                }
 
-                </li>
-            }
+
+                @if (childCategories.Count() > 0)
+                {
+                    <ul class="cute" style="display:none;overflow:hidden">
+                        @foreach (var childCategory in childCategories)
+                        {
+                            var childUrl = "/" + childCategory.Alias + ".pc-" + childCategory.ID + ".html";
+                            <li class="subitem3"><a href="@childUrl">@childCategory.Name</a></li>
+                        }
+
+                    </ul>
+                }
+
+            </li>
+           }
 
         </ul>
     </div>

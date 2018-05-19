@@ -10,7 +10,7 @@
             $scope.loginSubmit = function () {
                 loginService.login($scope.loginData.userName, $scope.loginData.password).then(function (response) {
                     if (response != null && response.data.error != undefined) {
-                        notificationService.displayError(response.data.error_description);
+                        notificationService.displayError("Đăng nhập không đúng.");
                     }
                     else {
                         var stateService = $injector.get('$state');
