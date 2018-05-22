@@ -74,8 +74,16 @@
     <Compile Include="Migrations\201805091529321_InitialUpateOrderDB.Designer.cs">
       <DependentUpon>201805091529321_InitialUpateOrderDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805211518122_ApplicationGroupUer.cs" />
+    <Compile Include="Migrations\201805211518122_ApplicationGroupUer.Designer.cs">
+      <DependentUpon>201805211518122_ApplicationGroupUer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ApplicationGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserGroupRepository.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FavoriteColorRepository.cs" />
@@ -124,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805091529321_InitialUpateOrderDB.resx">
       <DependentUpon>201805091529321_InitialUpateOrderDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805211518122_ApplicationGroupUer.resx">
+      <DependentUpon>201805211518122_ApplicationGroupUer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

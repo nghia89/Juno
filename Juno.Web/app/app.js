@@ -4,6 +4,9 @@
     angular.module('junoshop',
         ['junoshop.products',
         'junoshop.product_categories',
+        'junoshop.application_groups',
+        'junoshop.application_roles',
+        'junoshop.application_users',
         'junoshop.common'])
     .config(config)
     .config(configAuthentication);
