@@ -26,6 +26,7 @@ namespace Juno.server
         IEnumerable<Product> Getlastest(int top);
         IEnumerable<Product> GetHotProduct(int top);
         IEnumerable<Tag> GetListTagByProductId(int id);
+        IEnumerable<Product> GetListProduct(string keyword);
         //viewCount
         void IncreaseView(int id);
         IEnumerable<Product> GetListProductByTag(string Tagid, int page, int pageSize, out int totalRow);
@@ -224,6 +225,16 @@ namespace Juno.server
         public Tag GetTag(string tagid)
         {
             return _tagRepository.GetSingleByCondition(x =>x.ID==tagid);
+        }
+
+        public IEnumerable<Product> GetListProduct(string keyword)
+        {
+            IEnumerable<Product> query;
+            if (!string.IsNullOrEmpty(keyword))
+                query = _ProductRepository.GetMulti(x => x.Name.Contains(keyword));
+            else
+                query = _ProductRepository.GetAll();
+            return query;
         }
     }
 }

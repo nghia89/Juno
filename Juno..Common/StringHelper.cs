@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Juno.Common
 {
-   public class StringHelper
+   public static class StringHelper
     {
         public static string ToUnsignString(string input)
         {
@@ -34,6 +34,16 @@ namespace Juno.Common
                 str2 = str2.Replace("--", "-").ToLower();
             }
             return str2;
+        }
+
+        public static string Parse(this string template, Dictionary<string, string> replacements)
+        {
+            if (replacements.Count > 0)
+            {
+                template = replacements.Keys
+                            .Aggregate(template, (current, key) => current.Replace(key, replacements[key]));
+            }
+            return template;
         }
     }
 }
