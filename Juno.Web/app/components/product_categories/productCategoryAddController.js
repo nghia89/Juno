@@ -11,6 +11,7 @@
         }
         $scope.AddProductCategory = AddProductCategory;
         $scope.GetSeoTitle = GetSeoTitle;
+        $scope.flatFolders = [];
 
         function GetSeoTitle() {
             $scope.productCategory.Alias = commonService.getSeoTitle($scope.productCategory.Name);
@@ -25,11 +26,34 @@
         }
         function loadparentcategory() {
             apiService.get('api/productCategory/getallparent', null, function (result) {
-                $scope.parentcategories =result.data;
+                $scope.parentcategories = commonService.getTree(result.data, "ID", "ParentID");
+                $scope.parentcategories.forEach(function (item) {
+                    recur(item, 0, $scope.flatFolders);
+                });
             }, function () {
-                console.log('canot get list parent  ')
+                console.log('Cannot get list parent');
             });
         }
+        function times(n, str) {
+            var result = '';
+            for (var i = 0; i < n; i++) {
+                result += str;
+            }
+            return result;
+        };
+        function recur(item, level, arr) {
+            arr.push({
+                Name: times(level, '–') + ' ' + item.Name,
+                ID: item.ID,
+                Level: level,
+                Indent: times(level, '–')
+            });
+            if (item.children) {
+                item.children.forEach(function (item) {
+                    recur(item, level + 1, arr);
+                });
+            }
+        };
         loadparentcategory();
     }
 

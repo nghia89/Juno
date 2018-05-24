@@ -1,3 +1,11 @@
 ﻿(function () {
-    angular.module('junoshop.common', ['ui.router', 'ngBootbox', 'ngCkeditor', 'LocalStorageModule', 'checklist-model'])
+    angular.module('junoshop.common',
+        ['ui.router',
+         'ngBootbox',
+         'ngCkeditor',
+         'checklist-model',
+         'LocalStorageModule',
+         'ui.select',
+         'ngSanitize'
+        ])
 })();
