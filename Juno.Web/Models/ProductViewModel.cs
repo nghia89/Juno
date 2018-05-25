@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Juno.Web.Models
 {
-
+    [Serializable]
     public class ProductViewModel
     {
         public int ID { set; get; }

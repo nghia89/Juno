@@ -41,7 +41,7 @@ namespace Juno.server
 
         public IEnumerable<ProductCategory> GetAll()
         {
-            return _ProductCategoryRepository.GetAll();
+            return _ProductCategoryRepository.GetMulti(x=>x.HomeFlag==true);
         }
 
         public IEnumerable<ProductCategory> GetAll(string Keyword)

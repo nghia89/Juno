@@ -23,28 +23,29 @@
             <div class="clearfix"> </div>
         </div>
     </div>
+    
     <!-- grids_of_4 -->
     @if (Model.Count > 0)
     {
         <div class="grid-product">
             @foreach (var product in Model.Items)
-                {
-                    var url = "/" + product.Alias + ".p-" + product.ID+".html";
+            {
+                var url = "/" + product.Alias + ".p-" + product.ID + ".html";
                 <div class="  product-grid">
                     <div class="content_box">
                         <a href="@url">
-                            <div class="left-grid-view grid-view-left">
-                                <img src="@product.DefaultImage" class="img-responsive watch-right" alt="@product.Name" />
+                        </a><div class="left-grid-view grid-view-left">
+                            <a href="@url">
+                                <img src="@product.DefaultImage" class="img-responsive watch-right" alt="@product.Name">
                                 <div class="mask">
                                     <div class="info">Chi tiết</div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                        <h4><a href="@url"> @product.Name</a></h4>
+                        <p>@product.Description</p>   @(product.Price == 0 ? "Lên hệ" : product.Price.ToString("N0"))       
                     </div>
-                    <h4><a href="@url"> @product.Name</a></h4>
-                    <p>@product.Description</p>
-                    @(product.Price == 0 ? "Lên hệ" : product.Price.ToString("N0"))
-                </div>
+                </div>          
             }
 
         </div>

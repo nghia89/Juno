@@ -17,7 +17,7 @@
         $scope.GetSeoTitle = GetSeoTitle;
 
         function loadProductDetail() {
-           
+
             apiService.get('api/product/getbyid/' + $stateParams.id, null, function (result) {
                 $scope.product = result.data;
                 $scope.moreImages = JSON.parse($scope.product.MoreImages);
@@ -38,7 +38,7 @@
             });
         }
         function loadProductCategory() {
-            apiService.get('api/product/getallparent', null, function (result) {
+            apiService.get('api/productCategory/getallparent', null, function (result) {
                 $scope.productCategories = result.data;
             }, function () {
                 console.log('Cannot get list parent');

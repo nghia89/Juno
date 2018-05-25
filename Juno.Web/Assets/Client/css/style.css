@@ -693,10 +693,8 @@ p.m_text {
 .product-grid {
     margin: 5px 3px;
     float: left;
-    width: 32.333%;
-    padding: 2px 2px;
-    height: 234px;
-    border: 1px solid #ececec;
+    width: 32.333%;   
+    height: 341px;
 }
 .left-grid-view {
    overflow: hidden;

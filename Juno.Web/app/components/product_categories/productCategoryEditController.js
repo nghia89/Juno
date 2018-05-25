@@ -7,7 +7,7 @@
     function productCategoryEditController(apiService, $scope, notificationService, $state, $stateParams, commonService) {
         $scope.productCategory = {
             CreateDate: new Date(),
-            Status: true
+
         }
 
         $scope.UpdateProductCategory = UpdateProductCategory;
