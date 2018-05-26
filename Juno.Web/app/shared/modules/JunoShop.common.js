@@ -6,6 +6,7 @@
          'checklist-model',
          'LocalStorageModule',
          'ui.select',
-         'ngSanitize'
+         'ngSanitize',
+         'chart.js'
         ])
 })();

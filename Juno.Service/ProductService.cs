@@ -32,6 +32,7 @@ namespace Juno.server
         IEnumerable<Product> GetListProductByTag(string Tagid, int page, int pageSize, out int totalRow);
 
         Tag GetTag(string tagid);
+        bool SellProduct(int productId, int quantity);
         void Save();
     }
 
@@ -235,6 +236,15 @@ namespace Juno.server
             else
                 query = _ProductRepository.GetAll();
             return query;
+        }
+
+        public bool SellProduct(int productId, int quantity)
+        {
+            var product = _ProductRepository.GetSingleById(productId);
+            if (product.Quantity < quantity)
+                return false;
+            product.Quantity -= quantity;
+            return true;
         }
     }
 }

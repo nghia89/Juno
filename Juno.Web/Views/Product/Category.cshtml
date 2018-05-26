@@ -13,7 +13,7 @@
         <div class="women">
             <a href="/@(category.Alias).pc-@(category.ID).html"><h4>@category.Name - <span>@Model.TotalCount Sản phẫm</span> </h4></a>
             <ul class="w_nav">
-                <li>Sắp xếp : </li>
+                <h5 style="display: inline-block;">Sắp xếp : </h5>
                 <li><a class="active" href="?page=@Model.Page&sort=popular">Phổ biếng</a></li> |
                 <li><a href="?page=@Model.Page&sort=new">Mới </a></li> |
                 <li><a href="?page=@Model.Page&sort=discount">giá khuyến mãi</a></li> |
@@ -37,9 +37,9 @@
                         </a><div class="left-grid-view grid-view-left">
                             <a href="@url">
                                 <img src="@product.DefaultImage" class="img-responsive watch-right" alt="@product.Name">
-                                <div class="mask">
+                                @*<div class="mask">
                                     <div class="info">Chi tiết</div>
-                                </div>
+                                </div>*@
                             </a>
                         </div>
                         <h4><a href="@url"> @product.Name</a></h4>

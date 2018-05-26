@@ -7,6 +7,7 @@
         'junoshop.application_groups',
         'junoshop.application_roles',
         'junoshop.application_users',
+        'junoshop.statistics',
         'junoshop.common'])
     .config(config)
     .config(configAuthentication);

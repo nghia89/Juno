@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201805211518122_ApplicationGroupUer.Designer.cs">
       <DependentUpon>201805211518122_ApplicationGroupUer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805251723113_revenueStatisticSp.cs" />
+    <Compile Include="Migrations\201805251723113_revenueStatisticSp.Designer.cs">
+      <DependentUpon>201805251723113_revenueStatisticSp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApplicationGroupRepository.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805211518122_ApplicationGroupUer.resx">
       <DependentUpon>201805211518122_ApplicationGroupUer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805251723113_revenueStatisticSp.resx">
+      <DependentUpon>201805251723113_revenueStatisticSp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

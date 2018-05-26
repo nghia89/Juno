@@ -1,11 +1,9 @@
 ﻿using Juno.Model.Models;
 using Juno.server;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -15,10 +13,12 @@ namespace Juno.Web.Infrastructure.Core
     public class ApiControllerBase : ApiController
     {
         private IErrorService _erroservice;
+
         public ApiControllerBase(IErrorService errorService)
         {
             this._erroservice = errorService;
         }
+
         protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
         {
             HttpResponseMessage response = null;
@@ -51,6 +51,7 @@ namespace Juno.Web.Infrastructure.Core
             }
             return response;
         }
+
         public void LogError(Exception ex)
         {
             try
