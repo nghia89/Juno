@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Juno.Common;
 using Juno.Model.Models;
 using Juno.server;
 using Juno.Web.Models;
@@ -40,6 +41,19 @@ namespace Juno.Web.Controllers
             var topsaleProductViewModel = Mapper.Map<IEnumerable<Product>, IEnumerable<ProductViewModel>>(topsaleProductModel);
             homeViewModel.LastestProducts = lastestPeoductViewModel;
             homeViewModel.TopSaleProducts = topsaleProductViewModel;
+
+            try
+            {
+                homeViewModel.Title = _commonService.GetSystemConfig(CommonConstants.HomeTitle).ValueString;
+                homeViewModel.MetaDescription = _commonService.GetSystemConfig(CommonConstants.HomeTitle).ValueString;
+                homeViewModel.MetaKeyword = _commonService.GetSystemConfig(CommonConstants.HomeTitle).ValueString;
+            }
+            catch
+            {
+
+            }
+
+
             return View(homeViewModel);
         }
         [ChildActionOnly]

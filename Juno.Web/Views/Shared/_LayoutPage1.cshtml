@@ -2,14 +2,16 @@
 
 <html>
 <head>
-    <title>Big shope trang chu</title>
-    <link href="~/Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <!--theme-style-->
-    <link rel="shortcut icon" type="image/png" href="//theme.hstatic.net/1000003969/1000323463/14/favicon.png?v=6896">
-    <link href="~/Assets/Admin/libs/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
-
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="@ViewBag.MetaDescription"/>
+    <meta name="keywords" content="@ViewBag.MetaKeyword" />
+    @*<link href="~/Assets/Admin/libs/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
     <link href="~/Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/Assets/Client/css/StyleSheetCustom.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/StyleSheetCustom.css" rel="stylesheet" />*@
+    @Styles.Render("~/css/base")
+    <link rel="shortcut icon" type="image/png" href="//theme.hstatic.net/1000003969/1000323463/14/favicon.png?v=6896">
+
     <!--//theme-style-->
     <link href="~/Assets/Admin/Fontawesome/css/font-awesome.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -28,8 +30,11 @@
     </div>
     <!---->
   @{Html.RenderAction("Footer", "Home");} 
+    @*@Scripts.Render("~/js/jquery")
+    @Scripts.Render("~/js/plugins")*@
 
     <script src="~/Assets/Client/js/jquery.min.js"></script>
+
     <script src="~/Assets/Admin/libs/jquery-ui/jquery-ui.min.js"></script>
     <script src="~/Assets/Admin/libs/mustache/mustache.js"></script>
     <script src="~/Assets/Admin/libs/numeral/numeral.js"></script>

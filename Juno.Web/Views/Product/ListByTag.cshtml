@@ -1,7 +1,10 @@
 ﻿@model Juno.Web.Infrastructure.Core.PaginationSet<Juno.Web.Models.ProductViewModel>
 @{
     var tag = (Juno.Web.Models.TagViewModel)ViewBag.Tag;
-    ViewBag.Title = "kết quả tìm kiếm cho tag" + tag.Name;
+    var pageIndex = Model.Page;
+    ViewBag.Title = pageIndex==1?"kết quả tìm kiếm cho tag" + tag.Name: "kết quả tìm kiếm cho tag" + tag.Name+"- trang "+pageIndex;
+    ViewBag.MetaKeyword = pageIndex == 1 ? "kết quả tìm kiếm cho tag" + tag.Name : "kết quả tìm kiếm cho tag" + tag.Name + "- trang " + pageIndex;
+    ViewBag.MetaDescription = pageIndex == 1 ? "kết quả tìm kiếm cho tag" + tag.Name : "kết quả tìm kiếm cho tag" + tag.Name + "- trang " + pageIndex;
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 
 }

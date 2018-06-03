@@ -22,8 +22,36 @@
             CreateSlide(context);
             CreatePage(context);
             CreateContactDetail(context);
+            CreateConfigRitle(context);
             //  This method will be called after migrating to the latest version.
 
+        }
+        private void CreateConfigRitle(JunoDBContext context)
+        {
+            if (!context.SystemConfigs.Any(x=>x.Code=="HomeTitle"))
+            {
+                context.SystemConfigs.Add(new SystemConfig()
+                {
+                    Code = "HomeTitle",
+                    ValueString="Trang chủ shop"
+                });
+            }
+            if (!context.SystemConfigs.Any(x => x.Code == "HomeMetaKeyword"))
+            {
+                context.SystemConfigs.Add(new SystemConfig()
+                {
+                    Code = "HomeMetaKeyword",
+                    ValueString = "Trang chủ shop"
+                });
+            }
+            if (!context.SystemConfigs.Any(x => x.Code == "HomeMetaDesciption"))
+            {
+                context.SystemConfigs.Add(new SystemConfig()
+                {
+                    Code = "HomeMetaDesciption",
+                    ValueString = "Trang chủ shop"
+                });
+            }
         }
         private void CreateUser(JunoDBContext context)
         {

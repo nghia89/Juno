@@ -1,7 +1,9 @@
 ﻿@model Juno.Web.Models.ProductViewModel
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title =Model.Name;
+    ViewBag.MetaDescription = Model.MetaDescription;
+    ViewBag.MetaKeyword = Model.MetaKeyword;
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
     var relatedProduct = (IEnumerable<Juno.Web.Models.ProductViewModel>)ViewBag.relatedProducts;
     

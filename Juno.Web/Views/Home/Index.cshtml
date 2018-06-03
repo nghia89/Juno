@@ -1,6 +1,9 @@
 ﻿@model Juno.Web.Models.HomeViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model.Title;
+    ViewBag.MetaDescription = Model.MetaDescription;
+    ViewBag.MetaKeyword = Model.MetaKeyword;
+
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 @section JsFooter{

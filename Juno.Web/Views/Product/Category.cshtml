@@ -2,6 +2,8 @@
 @{
     var category = (Juno.Web.Models.ProductCategoryViewModel)ViewBag.category;
     var pageIndex = Model.Page;
+    ViewBag.MetaKeyword =pageIndex==1? category.MetaKeyword:category.MetaKeyword +"- Trang"+pageIndex;
+    ViewBag.MetaDescription =pageIndex==1? category.Description:category.Description + "- Trang" + pageIndex;
     ViewBag.Title = pageIndex == 1 ? category.Name : category.Name + " - Trang " + pageIndex;
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 
