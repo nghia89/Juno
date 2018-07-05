@@ -27,8 +27,8 @@ namespace Juno.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 var model = _statisticService.GetRevenueStatistic(fromDate, toDate);
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, model);
-                return response;
+                HttpResponseMessage responses = request.CreateResponse(HttpStatusCode.OK, model);
+                return responses;
             });
         }
     }

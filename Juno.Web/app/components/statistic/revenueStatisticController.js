@@ -7,6 +7,7 @@
         $scope.tabledata = [];
         $scope.labels = [];
         $scope.series = ['Doanh số', 'Lợi nhuận'];
+        $scope.options = { legend: { display: true } };
 
         $scope.chartdata = [];
         function getStatistic() {
@@ -25,7 +26,7 @@
                 var revenues = [];
                 var benefits = [];
                 $.each(response.data, function (i, item) {
-                    labels.push($filter('date')(item.Date,'dd/MM/yyyy'));
+                    labels.push($filter('date')(item.Date, 'dd/MM/yyyy'));
                     revenues.push(item.Revenues);
                     benefits.push(item.Benefit);
                 });

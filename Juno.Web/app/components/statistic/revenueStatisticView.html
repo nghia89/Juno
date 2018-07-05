@@ -25,7 +25,8 @@
                 <div class="tab-content no-padding">
                     <!-- Morris chart - Sales -->
                     <canvas id="bar" class="chart chart-bar"
-                            chart-data="chartdata" chart-labels="labels" chart-series="series"></canvas>
+                            chart-data="chartdata" chart-labels="labels" chart-series="series" chart-legend="true" 
+                         chart-dataset-override="datasetOverride"   chart-click="onClick"></canvas>
                 </div>
                 <div ng-if="loading">
                     <div class="col-xs-4"></div>
